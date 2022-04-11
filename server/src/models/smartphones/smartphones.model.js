@@ -23,7 +23,7 @@ async function addSmartphones(smartphone) {
 }
 
 // TODO: add delete functionality
-async function deleteSmartphone(id) {}
+async function deleteSmartphone(id) { }
 
 module.exports = {
   getSmartphones,
