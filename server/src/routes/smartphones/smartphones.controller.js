@@ -2,7 +2,7 @@ const {
   getSmartphones,
   addSmartphones,
   deleteSmartphone,
-} = require('@models/smartphones.model');
+} = require('@models/smartphones/smartphones.model');
 
 async function httpGetSmartphones(req, res) {
   return res.status(200).json(await getSmartphones());
