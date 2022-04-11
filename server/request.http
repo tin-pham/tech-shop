@@ -1,0 +1,11 @@
+GET http://localhost:8000/api/v1/smartphones
+
+POST http://localhost:8000/api/v1/smartphones
+Content-Type: application/json
+{
+  "title": "Samsung Galaxy Tab A 8 Inch",
+  "description": "lorem ipsum dolor sit amet, consectetur adipiscing el",
+  "brand": "Samsung",
+  "color": "White",
+  "price": 2790000
+}

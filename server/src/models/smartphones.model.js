@@ -1,11 +1,32 @@
-const products = [];
+const Smartphones = require('./smartphones.mongo');
 
-const product = {
-  id: '15401',
-  title: 'Iphone 13 Pro Max 256GB',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique enim et fringilla tincidunt. Proin ac mi mauris. Aliquam et hendrerit felis, vitae tempus turpis. Aenean luctus, risus eget maximus convallis, augue felis viverra ligula, eget tincidunt lacus lectus a risus. Maecenas laoreet id magna at fringilla',
-  brand: 'Apple',
-  color: 'Gold',
-  price: '36.990.000',
+async function getSmartphones() {
+  return await Smartphones.find({});
+}
+
+async function getSmartphonesById(id) {
+  return await Smartphones.find({
+    _id: id,
+  });
+}
+
+async function addSmartphones(smartphone) {
+  const { _id } = await Smartphones.create({
+    title: smartphone.title,
+    description: smartphone.description,
+    brand: smartphone.brand,
+    color: smartphone.color,
+    price: smartphone.price,
+  });
+
+  return await getSmartphonesById(_id);
+}
+
+// TODO: add delete functionality
+async function deleteSmartphone(id) { }
+
+module.exports = {
+  getSmartphones,
+  addSmartphones,
+  deleteSmartphone,
 };
