@@ -1,15 +1,17 @@
 const express = require('express');
 
 const {
-  httpGetSmartphones,
-  httpPostSmartphones,
+  httpGetAllSmartphones,
+  httpGetSmartphone,
+  httpPostSmartphone,
   httpDeleteSmartphone,
 } = require('./smartphones.controller');
 
 const router = express.Router();
 
-router.get('/', httpGetSmartphones);
-router.post('/', httpPostSmartphones);
+router.get('/', httpGetAllSmartphones);
+router.get('/:id', httpGetSmartphone);
+router.post('/', httpPostSmartphone);
 router.delete('/:id', httpDeleteSmartphone);
 
 module.exports = router;

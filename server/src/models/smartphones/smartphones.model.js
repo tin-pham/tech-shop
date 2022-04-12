@@ -1,16 +1,19 @@
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
+
 const Smartphones = require('./smartphones.mongo');
 
-async function getSmartphones() {
+async function getAllSmartphones() {
   return await Smartphones.find({});
 }
 
-async function getSmartphonesById(id) {
-  return await Smartphones.find({
-    _id: id,
+async function getSmartphoneById(id) {
+  return await Smartphones.findOne({
+    _id: ObjectId(id),
   });
 }
 
-async function addSmartphones(smartphone) {
+async function addSmartphone(smartphone) {
   const { _id } = await Smartphones.create({
     title: smartphone.title,
     description: smartphone.description,
@@ -19,14 +22,20 @@ async function addSmartphones(smartphone) {
     price: smartphone.price,
   });
 
-  return await getSmartphonesById(_id);
+  return await getSmartphoneById(_id);
 }
 
 // TODO: add delete functionality
-async function deleteSmartphone(id) { }
+async function deleteSmartphone(id) {
+  const smartphone = await getSmartphoneById(id);
+  await Smartphones.deleteOne({ _id: id });
+
+  return smartphone;
+}
 
 module.exports = {
-  getSmartphones,
-  addSmartphones,
+  getAllSmartphones,
+  getSmartphoneById,
+  addSmartphone,
   deleteSmartphone,
 };
