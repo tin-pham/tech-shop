@@ -79,7 +79,6 @@ describe('Launches API', () => {
         .expect('Content-Type', /json/)
         .expect(201);
 
-      console.log(response.body);
       expect(response.body).toMatchObject(smartphone);
     });
   });
