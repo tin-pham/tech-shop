@@ -4,7 +4,8 @@ module.exports = {
   checkProductName(req) {
     return check('title')
       .trim()
-      .notEmpty()
+      .not()
+      .isEmpty()
       .withMessage('Tên sản phẩm không được để trống')
       .isLength({ min: 5, max: 128 })
       .withMessage('Tên sản phẩm phải từ 5 đến 128 kí tự')
@@ -12,7 +13,8 @@ module.exports = {
   },
   checkProductPrice(req) {
     return check('price')
-      .notEmpty()
+      .not()
+      .isEmpty()
       .withMessage('Giá sản phẩm không được để trống')
       .isNumeric()
       .withMessage('Giá sản phẩm phải là số')

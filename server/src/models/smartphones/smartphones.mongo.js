@@ -12,6 +12,7 @@ const smartphonesSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  test: Boolean,
 });
 
 module.exports = mongoose.model('Smartphone', smartphonesSchema);

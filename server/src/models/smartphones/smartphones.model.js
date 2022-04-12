@@ -20,6 +20,7 @@ async function addSmartphone(smartphone) {
     brand: smartphone.brand,
     color: smartphone.color,
     price: smartphone.price,
+    test: smartphone.test,
   });
 
   return await getSmartphoneById(_id);
@@ -33,9 +34,14 @@ async function deleteSmartphone(id) {
   return smartphone;
 }
 
+async function getTestSmartphones() {
+  return await Smartphones.find({ test: true });
+}
+
 module.exports = {
   getAllSmartphones,
   getSmartphoneById,
   addSmartphone,
   deleteSmartphone,
+  getTestSmartphones,
 };

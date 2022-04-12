@@ -1,9 +1,13 @@
 const request = require('supertest');
 const app = require('@src/app');
 
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 // More utils to work with Jest
 const { toIncludeAllPartialMembers } = require('jest-extended');
 expect.extend({ toIncludeAllPartialMembers });
+
+const { getTestSmartphones } = require('@models/smartphones/smartphones.model');
 
 const { mongoConnect, mongoDisconnect } = require('@utils/mongo');
 
@@ -26,10 +30,11 @@ describe('Launches API', () => {
   });
 
   describe('POST /api/v1/smartphones', () => {
-    const smartphoneWithoutRequiredField = {};
+    const smartphoneWithoutRequiredField = { test: true };
     const smartphoneWithInvalidField = {
       title: 'abc',
-      price: '123',
+      price: 'abc',
+      test: true,
     };
     const smartphone = {
       title: 'Vivo Y21 4GB + 64GB',
@@ -38,6 +43,7 @@ describe('Launches API', () => {
       brand: 'Vivo',
       color: 'Blue',
       price: 3550000,
+      test: true,
     };
 
     test('It should catch error if required field is empty', async () => {
@@ -56,7 +62,7 @@ describe('Launches API', () => {
     test('It should catch error if field is not valid', async () => {
       const response = await request(app)
         .post('/api/v1/smartphones')
-        .send(smartphoneWithoutRequiredField)
+        .send(smartphoneWithInvalidField)
         .expect('Content-Type', /json/)
         .expect(400);
 
@@ -73,7 +79,21 @@ describe('Launches API', () => {
         .expect('Content-Type', /json/)
         .expect(201);
 
+      console.log(response.body);
       expect(response.body).toMatchObject(smartphone);
+    });
+  });
+  describe('DELETE /api/v1/smartphone/:id', () => {
+    test('It should delete all test smartphones', async () => {
+      const testSmartphones = await getTestSmartphones();
+      for (let smartphone of testSmartphones) {
+        const response = await request(app)
+          .delete(`/api/v1/smartphones/${smartphone._id}`)
+          .expect('Content-Type', /json/)
+          .expect(200);
+
+        expect(response.body).toMatchObject({ _id: ObjectId(smartphone._id) });
+      }
     });
   });
 });

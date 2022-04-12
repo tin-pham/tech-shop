@@ -5,10 +5,7 @@ GET http://localhost:8000/api/v1/smartphones/625379c6e50a565fddb4d97b
 POST http://localhost:8000/api/v1/smartphones
 Content-Type: application/json
 {
-  "title": "Some stupid stuff",
-  "description": "lorem ipsum dolor sit amet, consectetur adipiscing el",
-  "brand": "Samsung",
-  "color": "White",
+  "title": "",
   "price": "120"
 }
 
@@ -22,4 +19,6 @@ Content-Type: application/json
     "color": "White",
     "price": 2790000,
 }
+
+DELETE http://localhost:8000/api/v1/smartphones/6253fd85a1540b4c1c21070c
 
