@@ -13,7 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^27.5.1",
-    "nodemon": "^2.0.15"
+    "jest-extended": "^2.0.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   },
   "dependencies": {
     "dotenv": "^16.0.0",
@@ -26,12 +28,16 @@
   "_moduleAliases": {
     "@root": ".",
     "@routes": "./src/routes",
-    "@models": "./src/models"
+    "@models": "./src/models",
+    "@src": "./src",
+    "@utils": "./src/utils"
   },
   "jest": {
     "moduleNameMapper": {
-      "^@routes$": "<rootDir>/src/routes/$1",
-      "^@models$": "<rootDir>/src/models/$1"
+      "@routes(.*)": "<rootDir>/src/routes/$1",
+      "@models(.*)": "<rootDir>/src/models/$1",
+      "@src(.*)": "<rootDir>/src/$1",
+      "@utils(.*)": "<rootDir>/src/utils/$1"
     }
   }
 }

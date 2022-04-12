@@ -12,6 +12,8 @@ module.exports = {
   },
   checkProductPrice(req) {
     return check('price')
+      .notEmpty()
+      .withMessage('Giá sản phẩm không được để trống')
       .isNumeric()
       .withMessage('Giá sản phẩm phải là số')
       .run(req);

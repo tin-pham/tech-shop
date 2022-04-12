@@ -32,7 +32,6 @@ module.exports = {
         return res.status(201).json(newSmartphone);
       }
     } catch (errors) {
-      console.error(errors);
       return res.status(400).json(errors);
     }
   },
