@@ -82,6 +82,21 @@ describe('Launches API', () => {
       expect(response.body).toMatchObject(smartphone);
     });
   });
+
+  describe('GET /api/v1/smartphone/:id', () => {
+    test('It should return all test smartphones', async () => {
+      const testSmartphones = await getTestSmartphones();
+      for (let smartphone of testSmartphones) {
+        const response = await request(app)
+          .get(`/api/v1/smartphones/${smartphone._id}`)
+          .expect('Content-Type', /json/)
+          .expect(200);
+
+        expect(response.body).toMatchObject({ _id: ObjectId(smartphone._id) });
+      }
+    });
+  });
+
   describe('DELETE /api/v1/smartphone/:id', () => {
     test('It should delete all test smartphones', async () => {
       const testSmartphones = await getTestSmartphones();
