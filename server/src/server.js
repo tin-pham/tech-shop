@@ -6,7 +6,7 @@ require('module-alias')(path.join(__dirname, '..'));
 require('dotenv').config();
 
 const app = require('./app');
-const { mongoConnect } = require('@utils/mongo');
+const { mongoConnect } = require('@services/mongo');
 
 const PORT = process.env.PORT || 8000;
 

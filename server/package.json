@@ -30,14 +30,14 @@
     "@routes": "./src/routes",
     "@models": "./src/models",
     "@src": "./src",
-    "@utils": "./src/utils"
+    "@services": "./src/services"
   },
   "jest": {
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
       "@models(.*)": "<rootDir>/src/models/$1",
       "@src(.*)": "<rootDir>/src/$1",
-      "@utils(.*)": "<rootDir>/src/utils/$1"
+      "@services(.*)": "<rootDir>/src/services/$1"
     }
   }
 }
