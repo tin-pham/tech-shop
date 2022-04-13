@@ -9,9 +9,9 @@ expect.extend({ toIncludeAllPartialMembers });
 
 const { getTestSmartphones } = require('@models/smartphones/smartphones.model');
 
-const { mongoConnect, mongoDisconnect } = require('@utils/mongo');
+const { mongoConnect, mongoDisconnect } = require('@services/mongo');
 
-describe('Launches API', () => {
+describe('Launches products API', () => {
   beforeAll(async () => {
     await mongoConnect();
   });
@@ -26,6 +26,25 @@ describe('Launches API', () => {
         .get('/api/v1/smartphones')
         .expect('Content-Type', /json/)
         .expect(200);
+    });
+  });
+
+  describe('GET /api/v1/smartphones/?page=1&limit=2 and ?page=2&limit2', () => {
+    test('It should get the 2 page of request with two different object', async () => {
+      const response1 = await request(app)
+        .get('/api/v1/smartphones/?page=1&limit=2')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      const response2 = await request(app)
+        .get('/api/v1/smartphones/?page=2&limit2')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      // If 2 page is the same => the pagination not work
+      const page1 = response1.body;
+      const page2 = response2.body;
+      expect(page1).not.toStrictEqual(page2);
     });
   });
 

@@ -3,14 +3,16 @@ const ObjectId = mongoose.Types.ObjectId;
 
 const Smartphones = require('./smartphones.mongo');
 
-async function getAllSmartphones() {
-  return await Smartphones.find({});
+const { getPagination } = require('@services/query');
+
+async function getAllSmartphones(query) {
+  const { limit, skip } = getPagination(query);
+
+  return await Smartphones.find({}, { __v: 0 }).skip(skip).limit(limit);
 }
 
 async function getSmartphoneById(id) {
-  return await Smartphones.findOne({
-    _id: ObjectId(id),
-  });
+  return await Smartphones.findOne({ _id: ObjectId(id) }, { __v: 0 });
 }
 
 async function addSmartphone(smartphone) {

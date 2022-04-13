@@ -14,7 +14,8 @@ const {
 
 module.exports = {
   async httpGetAllSmartphones(req, res) {
-    return res.status(200).json(await getAllSmartphones());
+    const { page, limit } = req.query;
+    return res.status(200).json(await getAllSmartphones({ page, limit }));
   },
 
   async httpGetSmartphone(req, res) {
