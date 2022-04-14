@@ -1,14 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const smartphonesSchema = new Schema({
-  title: {
+const phonesSchema = new Schema({
+  name: {
     type: String,
+    required: true,
+  },
+  category: {
+    type: [String],
     required: true,
   },
   description: String,
   brand: String,
-  options: [String],
+  variations: [String],
+  bundles: [String],
+  quantity: Number,
   price: {
     type: [Number],
     required: true,
@@ -16,4 +22,4 @@ const smartphonesSchema = new Schema({
   test: Boolean,
 });
 
-module.exports = mongoose.model('Smartphone', smartphonesSchema);
+module.exports = mongoose.model('Phone', phonesSchema);

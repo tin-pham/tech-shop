@@ -3,10 +3,11 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 require('module-alias')(path.join(__dirname, '..'));
-require('dotenv').config();
 
-const app = require('./app');
+require('dotenv').config({ path: path.resolve('env/.env') });
+
 const { mongoConnect } = require('@services/mongo');
+const app = require('./app');
 
 const PORT = process.env.PORT || 8000;
 

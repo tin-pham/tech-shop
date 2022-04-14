@@ -2,7 +2,7 @@ const { check } = require('express-validator');
 
 module.exports = {
   checkProductName(req) {
-    return check('title')
+    return check('name')
       .trim()
       .not()
       .isEmpty()

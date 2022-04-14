@@ -1,0 +1,64 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+MONGO_URL	src/services/mongo.js	/^const MONGO_URL = 'mongodb:\/\/127.0.0.1:27017\/products';$/;"	V
+TODO	src/models/smartphones/smartphones.model.js	/^\/\/ TODO: add delete functionality$/;"	T
+_id	src/models/smartphones/smartphones.model.js	/^  const { _id } = await Smartphones.create({$/;"	V
+addSmartphone	src/models/smartphones/smartphones.model.js	/^  addSmartphone,$/;"	V
+addSmartphone	src/models/smartphones/smartphones.model.js	/^async function addSmartphone(smartphone) {$/;"	F
+addSmartphone	src/routes/smartphones/smartphones.controller.js	/^  addSmartphone,$/;"	V
+brand	src/models/smartphones/smartphones.mongo.js	/^  brand: String,$/;"	P
+check	src/models/products/products.validator.js	/^const { check } = require('express-validator');$/;"	V
+checkProductName	src/models/products/products.validator.js	/^  checkProductName(req) {$/;"	M
+checkProductName	src/routes/smartphones/smartphones.controller.js	/^  checkProductName,$/;"	V
+checkProductPrice	src/models/products/products.validator.js	/^  checkProductPrice(req) {$/;"	M
+checkProductPrice	src/routes/smartphones/smartphones.controller.js	/^  checkProductPrice,$/;"	V
+color	src/models/smartphones/smartphones.mongo.js	/^  color: String,$/;"	P
+deleteSmartphone	src/models/smartphones/smartphones.model.js	/^  deleteSmartphone,$/;"	V
+deleteSmartphone	src/models/smartphones/smartphones.model.js	/^async function deleteSmartphone(id) {$/;"	F
+deleteSmartphone	src/routes/smartphones/smartphones.controller.js	/^  deleteSmartphone,$/;"	V
+description	src/models/smartphones/smartphones.mongo.js	/^  description: String,$/;"	P
+exports	src/models/products/products.validator.js	/^module.exports = {$/;"	P
+exports	src/models/smartphones/smartphones.model.js	/^module.exports = {$/;"	P
+exports	src/routes/smartphones/smartphones.controller.js	/^module.exports = {$/;"	P
+exports	src/services/mongo.js	/^module.exports = {$/;"	P
+getAllSmartphones	src/models/smartphones/smartphones.model.js	/^  getAllSmartphones,$/;"	V
+getAllSmartphones	src/models/smartphones/smartphones.model.js	/^async function getAllSmartphones() {$/;"	F
+getAllSmartphones	src/routes/smartphones/smartphones.controller.js	/^  getAllSmartphones,$/;"	V
+getSmartphoneById	src/models/smartphones/smartphones.model.js	/^  getSmartphoneById,$/;"	V
+getSmartphoneById	src/models/smartphones/smartphones.model.js	/^async function getSmartphoneById(id) {$/;"	F
+getSmartphoneById	src/routes/smartphones/smartphones.controller.js	/^  getSmartphoneById,$/;"	V
+getTestSmartphones	src/models/smartphones/smartphones.model.js	/^  getTestSmartphones,$/;"	V
+getTestSmartphones	src/models/smartphones/smartphones.model.js	/^async function getTestSmartphones() {$/;"	F
+getTestSmartphones	src/routes/smartphones/smartphones.test.js	/^const { getTestSmartphones } = require('@models\/smartphones\/smartphones.model');$/;"	V
+httpDeleteSmartphone	src/routes/smartphones/smartphones.controller.js	/^  async httpDeleteSmartphone(req, res) {$/;"	M
+httpDeleteSmartphone	src/routes/smartphones/smartphones.router.js	/^  httpDeleteSmartphone,$/;"	V
+httpGetAllSmartphones	src/routes/smartphones/smartphones.controller.js	/^  async httpGetAllSmartphones(req, res) {$/;"	M
+httpGetAllSmartphones	src/routes/smartphones/smartphones.router.js	/^  httpGetAllSmartphones,$/;"	V
+httpGetSmartphone	src/routes/smartphones/smartphones.controller.js	/^  async httpGetSmartphone(req, res) {$/;"	M
+httpGetSmartphone	src/routes/smartphones/smartphones.router.js	/^  httpGetSmartphone,$/;"	V
+httpPostSmartphone	src/routes/smartphones/smartphones.controller.js	/^  async httpPostSmartphone(req, res) {$/;"	M
+httpPostSmartphone	src/routes/smartphones/smartphones.router.js	/^  httpPostSmartphone,$/;"	V
+mongoConnect	src/routes/smartphones/smartphones.test.js	/^const { mongoConnect, mongoDisconnect } = require('@utils\/mongo');$/;"	V
+mongoConnect	src/server.js	/^const { mongoConnect } = require('@services\/mongo');$/;"	V
+mongoConnect	src/services/mongo.js	/^  async mongoConnect() {$/;"	M
+mongoDisconnect	src/routes/smartphones/smartphones.test.js	/^const { mongoConnect, mongoDisconnect } = require('@utils\/mongo');$/;"	V
+mongoDisconnect	src/services/mongo.js	/^  async mongoDisconnect() {$/;"	M
+price	src/models/smartphones/smartphones.mongo.js	/^  price: {$/;"	P
+price	src/routes/smartphones/smartphones.test.js	/^      price: 3550000,$/;"	P
+required	src/models/smartphones/smartphones.mongo.js	/^    required: true,$/;"	P
+runServer	src/server.js	/^async function runServer() {$/;"	F
+smartphone	src/routes/smartphones/smartphones.test.js	/^    const smartphone = {$/;"	O
+smartphoneWithInvalidField	src/routes/smartphones/smartphones.test.js	/^    const smartphoneWithInvalidField = {$/;"	O
+smartphoneWithoutRequiredField	src/routes/smartphones/smartphones.test.js	/^    const smartphoneWithoutRequiredField = { test: true };$/;"	O
+smartphonesSchema	src/models/smartphones/smartphones.mongo.js	/^const smartphonesSchema = new mongoose.Schema({$/;"	V
+test	src/models/smartphones/smartphones.mongo.js	/^  test: Boolean,$/;"	P
+test	src/routes/smartphones/smartphones.test.js	/^      test: true,$/;"	P
+title	src/models/smartphones/smartphones.mongo.js	/^  title: {$/;"	P
+toIncludeAllPartialMembers	src/routes/smartphones/smartphones.test.js	/^const { toIncludeAllPartialMembers } = require('jest-extended');$/;"	V
+type	src/models/smartphones/smartphones.mongo.js	/^    type: Number,$/;"	P
+type	src/models/smartphones/smartphones.mongo.js	/^    type: String,$/;"	P
+validationResult	src/routes/smartphones/smartphones.controller.js	/^const { validationResult } = require('express-validator');$/;"	V

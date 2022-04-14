@@ -1,14 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 
-const smartphonesRouter = require('@routes/smartphones/smartphones.router');
-
-const v1Api = require('@routes/v1.api');
+const vTestApi = require('@routes/v0.2.api');
 
 const app = express();
 app.use(express.json());
 app.use(morgan('combined'));
+app.set('json spaces', 2);
 
-app.use('/api/v1', v1Api);
+app.use('/api', vTestApi);
 
 module.exports = app;
