@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as *;
+@use '../themes/default' as *;
+
+body {
+  background-color: $main-background;
+}
+
+h1 {
+  font-weight: $semi-bold;
+}
