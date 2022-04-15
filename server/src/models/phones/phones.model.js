@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 const Phones = require('./phones.mongo');
-
 const { getPagination } = require('@services/query');
+
+const { formatErrors } = require('@services/utils');
 
 async function getAllPhones(query) {
   const { limit, skip } = getPagination(query);
@@ -16,9 +17,12 @@ async function getPhoneById(id) {
 }
 
 async function addPhone(phone) {
-  const { _id } = await Phones.create(phone);
-
-  return await getPhoneById(_id);
+  try {
+    const { _id } = await Phones.create(phone);
+    return await getPhoneById(_id);
+  } catch (errors) {
+    throw formatErrors(errors);
+  }
 }
 
 // TODO: add delete functionality

@@ -17,6 +17,11 @@ function formatErrors(validationResult) {
   return errors;
 }
 
+function arrayNotEmpty(item) {
+  return Array.isArray(item) && item.length > 0;
+}
+
 module.exports = {
   formatErrors,
+  arrayNotEmpty,
 };
