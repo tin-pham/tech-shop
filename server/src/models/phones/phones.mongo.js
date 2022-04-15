@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const phonesSchema = new Schema({
+const phoneSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -22,4 +22,4 @@ const phonesSchema = new Schema({
   test: Boolean,
 });
 
-module.exports = mongoose.model('Phone', phonesSchema);
+module.exports = mongoose.model('Phone', phoneSchema);

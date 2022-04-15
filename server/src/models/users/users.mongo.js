@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UsersSchema = new Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     required: [true, 'Tên đăng nhập không được để trống'],
@@ -18,4 +18,4 @@ const UsersSchema = new Schema({
   addresses: [String],
 });
 
-module.exports = mongoose.model('User', UsersSchema);
+module.exports = mongoose.model('User', UserSchema);
