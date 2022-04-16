@@ -1,0 +1,14 @@
+@use '../abstracts/mixins' as *;
+@use '../themes/default' as *;
+
+.home {
+  @include flex(flex-start, center, column);
+  gap: 1em;
+
+  font-size: 3rem;
+  &__endpoint {
+    a {
+      color: $main-text;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const smartphonesRouter = require('@routes/smartphones/smartphones.router');
+const smartphonesRouter = require('@api/smartphones/smartphones.router');
 
 const api = express.Router();
 

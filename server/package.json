@@ -34,6 +34,8 @@
   "_moduleAliases": {
     "@root": ".",
     "@routes": "./src/routes",
+    "@api": "./src/routes/api",
+    "@client": "./src/routes/client",
     "@models": "./src/models",
     "@src": "./src",
     "@services": "./src/services",
@@ -42,6 +44,8 @@
   "jest": {
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
+      "@api(.*)": "<rootDir>/src/routes/api/$1",
+      "@client(.*)": "<rootDir>/src/routes/client/$1",
       "@models(.*)": "<rootDir>/src/models/$1",
       "@src(.*)": "<rootDir>/src/$1",
       "@services(.*)": "<rootDir>/src/services/$1",

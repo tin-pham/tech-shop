@@ -1,7 +1,7 @@
 const express = require('express');
 
-const phonesRouter = require('@routes/phones/phones.router');
-const usersRouter = require('@routes/users/users.router');
+const phonesRouter = require('@api/phones/phones.router');
+const usersRouter = require('@api/users/users.router');
 
 const api = express.Router();
 

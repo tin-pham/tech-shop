@@ -1,6 +1,10 @@
 @use '../abstracts/mixins' as *;
+@use '../themes' as *;
 
 .header {
   @include flex(space-between, center);
-  padding: 0.5em;
+  padding: 1.2em;
+  &__button {
+    font-size: 3rem;
+  }
 }

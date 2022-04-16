@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const { engine } = require('express-handlebars');
 
-const vTestApi = require('@routes/v0.2.api');
+const vTestApi = require(`@routes/api`);
+const clientRouter = require('@routes/client');
 const authRouter = require('@routes/auth/auth.router');
 
 const app = express();
@@ -27,10 +28,8 @@ app.use(express.json());
 app.use(express.static(path.resolve('src/public')));
 app.use(morgan('combined'));
 
-app.get('/', (req, res) => {
-  res.render('home');
-});
 app.use(authRouter);
+app.use('/', clientRouter);
 app.use('/api', vTestApi);
 
 module.exports = app;
