@@ -1,0 +1,59 @@
+@use '../themes/default' as *;
+@use '../abstracts/variables' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0.5em;
+  max-width: 500px;
+  min-width: 300px;
+  margin-inline: auto;
+  padding: 30px;
+
+  background-color: $side-background;
+
+  box-shadow: 5px 6px 8px -3px rgba(141, 141, 170, 0.25);
+  border-radius: 0.5em;
+
+  &__title {
+    font-weight: $semi-bold;
+    font-size: clamp(3rem, 4vw, 6rem);
+  }
+
+  .input-container {
+    display: flex;
+    gap: 0.25em;
+  }
+}
+
+.form-group {
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+
+    label {
+      flex: 1;
+    }
+
+    .form-input {
+      flex: 2;
+    }
+  }
+}
+
+.inner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  &__button {
+    line-height: 0;
+    padding: 0;
+    align-self: flex-start;
+    font-size: 4rem;
+    i {
+      line-height: 0.5;
+    }
+  }
+}

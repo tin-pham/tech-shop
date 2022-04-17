@@ -1,0 +1,25 @@
+@use '../themes' as *;
+@use '../abstracts/variables' as *;
+
+.btn {
+  padding: 0.5em;
+
+  background: none;
+  color: white;
+  border: none;
+
+  text-transform: uppercase;
+  font-weight: $medium;
+  letter-spacing: 0.1em;
+
+  border-radius: 0.5em;
+}
+
+@mixin button($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+.btn--primary {
+  @include button($primary, $side-text);
+}

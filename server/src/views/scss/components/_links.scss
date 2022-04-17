@@ -1,0 +1,15 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+.links {
+  @include flex(flex-start, center, column);
+  gap: 0.5em;
+  font-size: 2.5rem;
+  &__endpoint {
+    display: flex;
+    justify-content: space-around;
+    p {
+      font-weight: $semi-bold;
+    }
+  }
+}

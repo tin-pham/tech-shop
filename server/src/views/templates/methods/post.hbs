@@ -1,0 +1,54 @@
+<section>
+  <form class='form form-phone' method='POST'>
+    <div class='form-group'>
+      <div class='form-group__main'>
+
+        <label for='name'>Tên sản phẩm</label>
+        <input type='text' id='name' name='name' class='form-input' />
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='form-group__main'>
+
+        <label for='category'>Danh mục sản phẩm</label>
+        <select name='category' id='category' class='form-input'>
+          <optgroup label='Điện thoại'>
+            <option value='Điện thoại nút bấm'>Điện thoại nút bấm</option>
+            <option value='Điện thoại thông minh'>Điện thoại thông minh</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='form-group__main'>
+
+        <label for='brand'>Nhãn hiệu</label>
+        <select name='brand' id='brand' class='form-input'>
+          <option value='Nokia'>Nokia</option>
+          <option value='Samsung'>Samsung</option>
+          <option value='Apple'>Apple</option>
+        </select>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <div class='form-group__main'>
+
+        <label for='price'>Giá gốc</label>
+        <input type='number' id='price' name='price' min='0' step='1000' />
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <div class='form-group__main'>
+
+        <label for='quantity'>Số lượng</label>
+        <input type='text' id='quantity' name='quantity' />
+      </div>
+    </div>
+
+    <button class='btn btn--primary' type='submit'>Tạo sản phẩm</button>
+  </form>
+</section>
+
+<script src='{{script}}'></script>

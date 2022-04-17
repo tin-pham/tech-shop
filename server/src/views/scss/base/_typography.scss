@@ -1,11 +1,20 @@
 @use '../abstracts/variables' as *;
 @use '../themes/default' as *;
 
-body {
-  background-color: $main-background;
-}
-
 h1 {
   font-weight: $semi-bold;
   font-size: 4rem;
+}
+
+.form {
+  font-size: 1.5em;
+}
+
+input {
+  font-weight: $light;
+}
+
+a {
+  color: $main-text;
+  text-decoration: none;
 }

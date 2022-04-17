@@ -2,19 +2,86 @@
    v2.0-modified | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -29,8 +96,17 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -38,16 +114,20 @@ body {
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -347,12 +427,6 @@ img {
   vertical-align: middle;
 }
 
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
 textarea {
   resize: vertical;
 }
@@ -364,28 +438,50 @@ textarea {
   padding: 0.2em 0;
 }
 
-a {
-  color: hsl(0deg, 0%, 13%);
-  text-decoration: none;
+body {
+  overflow: auto;
+  background-color: hsl(36deg, 24%, 98%);
 }
 
 button {
   background: none;
   border: none;
-  font-weight: 300;
+}
+
+input {
+  padding: 0.25em;
+  border: 1px solid hsl(60deg, 2%, 87%);
+}
+
+:focus {
+  background-color: hsl(60deg, 2%, 87%);
+  outline: 1px dashed black;
 }
 
 body {
   font-family: Quicksand, sans-serif;
 }
 
-body {
-  background-color: hsl(36deg, 24%, 96%);
-}
-
 h1 {
   font-weight: 600;
   font-size: 4rem;
+}
+
+.form {
+  font-size: 1.5em;
+}
+
+input {
+  font-weight: 300;
+}
+
+a {
+  color: hsl(0deg, 0%, 13%);
+  text-decoration: none;
+}
+
+.main {
+  padding-inline: 1em;
 }
 
 .header {
@@ -418,6 +514,87 @@ h1 {
   flex-direction: column;
   gap: 1em;
   font-size: 3rem;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  font-size: 2.5rem;
+}
+.links__endpoint {
+  display: flex;
+  justify-content: space-around;
+}
+.links__endpoint p {
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 0.5em;
+  max-width: 500px;
+  min-width: 300px;
+  margin-inline: auto;
+  padding: 30px;
+  background-color: hsl(36deg, 24%, 99%);
+  box-shadow: 5px 6px 8px -3px rgba(141, 141, 170, 0.25);
+  border-radius: 0.5em;
+}
+.form__title {
+  font-weight: 600;
+  font-size: clamp(3rem, 4vw, 6rem);
+}
+.form .input-container {
+  display: flex;
+  gap: 0.25em;
+}
+
+.form-group__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+.form-group__main label {
+  flex: 1;
+}
+.form-group__main .form-input {
+  flex: 2;
+}
+
+.inner-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+.inner-form__button {
+  line-height: 0;
+  padding: 0;
+  align-self: flex-start;
+  font-size: 4rem;
+}
+.inner-form__button i {
+  line-height: 0.5;
+}
+
+.btn {
+  padding: 0.5em;
+  background: none;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  border-radius: 0.5em;
+}
+
+.btn--primary {
+  background-color: hsl(344deg, 50%, 69%);
+  color: hsl(36deg, 24%, 96%);
 }
 
 /*# sourceMappingURL=styles.css.map */

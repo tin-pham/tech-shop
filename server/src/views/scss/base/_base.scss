@@ -1,13 +1,22 @@
 @use '../themes' as *;
 @use '../abstracts/variables' as *;
 
-a {
-  color: $main-text;
-  text-decoration: none;
+body {
+  overflow: auto;
+  background-color: $main-background;
 }
 
 button {
   background: none;
   border: none;
-  font-weight: $light;
+}
+
+input {
+  padding: 0.25em;
+  border: 1px solid $gray-background;
+}
+
+:focus {
+  background-color: $gray-background;
+  outline: 1px dashed black;
 }

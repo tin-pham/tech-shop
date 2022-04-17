@@ -21,4 +21,10 @@ module.exports = {
       return res.status(400).json(errors);
     }
   },
+  getSignUpPage(req, res) {
+    return res.render('templates/signup', { script: '/js/signup.client.js' });
+  },
+  getSignInPage(req, res) {
+    return res.render('templates/signin');
+  },
 };

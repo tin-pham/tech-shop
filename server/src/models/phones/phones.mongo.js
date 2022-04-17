@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const { arrayNotEmpty } = require('@services/utils');
-
 const phoneSchema = new Schema({
   name: {
     type: String,
@@ -10,20 +8,25 @@ const phoneSchema = new Schema({
     minlength: [5, 'Tên sản phẩm phải có ít nhất 5 kí tự'],
   },
   category: {
-    type: [String],
-    validate: [arrayNotEmpty, 'Vui lòng nhập danh mục sản phẩm'],
+    type: String,
+    required: [true, 'Vui lòng nhập danh mục sản phẩm'],
   },
   description: String,
   brand: String,
   variations: [String],
-  bundles: [String],
-  quantity: Number,
-  // TODO: Validate value must greater than 0
-  price: {
-    type: [Number],
-    validate: [arrayNotEmpty, 'Vui lòng nhập giá sản phẩm'],
+  bundles: {
+    name: String,
+    price: Number,
   },
-  test: Boolean,
+  quantity: Number,
+  price: {
+    type: Number,
+    required: [true, 'Vui lòng nhập giá sản phẩm'],
+  },
+  test: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('Phone', phoneSchema);
