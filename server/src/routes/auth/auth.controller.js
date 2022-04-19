@@ -1,22 +1,36 @@
-const { validationResult } = require('express-validator');
-
 const { createUser } = require('@models/users/users.model');
+const Users = require('@models/users/users.mongo');
 
+const { createToken } = require('@services/jwt');
+
+const maxAge = 1 * 24 * 60 * 60;
 module.exports = {
-  async httpSignIn(req, res) {
-    const { username, password } = req.body;
-
-    // TODO: Add sign in functionality
-    console.log(username, password);
-
-    return res.status(200).send('Signed in');
-  },
-  async httpSignUp(req, res) {
+  async httpLogIn(req, res) {
     const { username, password } = req.body;
 
     try {
+      const user = await Users.login({ username, password });
+
+      const token = createToken(user._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+
+      return res.status(200).json({ id: user._id });
+    } catch (errors) {
+      // TODO: Better error handling
+      return res.status(401).json({ error: errors.message });
+    }
+  },
+  async httpSignUp(req, res) {
+    const { username, password } = req.body;
+    const maxAge = 1 * 24 * 60 * 60 * 1000;
+
+    try {
       const newUser = await createUser({ username, password });
-      return res.status(201).json(newUser);
+
+      const token = createToken(newUser._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+
+      return res.status(201).json(newUser._id);
     } catch (errors) {
       return res.status(400).json(errors);
     }
@@ -24,7 +38,7 @@ module.exports = {
   getSignUpPage(req, res) {
     return res.render('templates/signup', { script: '/js/signup.client.js' });
   },
-  getSignInPage(req, res) {
-    return res.render('templates/signin');
+  getLogInPage(req, res) {
+    return res.render('templates/login', { script: '/js/login.client.js' });
   },
 };

@@ -4,7 +4,8 @@
   "description": "## This app primarily focusing on the server",
   "main": "index.js",
   "scripts": {
-    "server": "npm run watch --prefix server"
+    "server": "npm run watch --prefix server",
+    "inspect": "npm run inspect --prefix server"
   },
   "repository": {
     "type": "git",

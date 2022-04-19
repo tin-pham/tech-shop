@@ -1,4 +1,4 @@
-const form = document.querySelector('.form-signup');
+const form = document.querySelector('.form-login');
 
 function displayErrors(errors) {
   const errorContainer = document.querySelectorAll('.errors');
@@ -13,13 +13,15 @@ form.addEventListener('submit', async (e) => {
 
   const username = form.username.value;
   const password = form.password.value;
+  console.log(username, password);
 
   try {
-    const res = await fetch('/signup', {
+    const res = await fetch('/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+    console.log(res);
     if (!res.ok) {
       const json = await res.json();
       throw json;

@@ -26,4 +26,20 @@ UserSchema.pre('save', async function(next) {
   next();
 });
 
+UserSchema.statics.login = async function({ username, password }) {
+  const user = await this.findOne({ username });
+
+  if (!user) {
+    throw Error('Tên người dùng hoặc mật khẩu sai');
+  }
+
+  const auth = await bcrypt.compare(password, user.password);
+  console.log(auth);
+  if (!auth) {
+    throw Error('Tên người dùng hoặc mật khẩu sai');
+  }
+
+  return user;
+};
+
 module.exports = mongoose.model('User', UserSchema);

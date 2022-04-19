@@ -1,10 +1,10 @@
 const { Router } = require('express');
 
 const {
-  httpSignIn,
+  httpLogIn,
   httpSignUp,
   getSignUpPage,
-  getSignInPage,
+  getLogInPage,
 } = require('./auth.controller');
 
 const router = Router();
@@ -12,7 +12,7 @@ const router = Router();
 router.get('/signup', getSignUpPage);
 router.post('/signup', httpSignUp);
 
-router.get('/signin', getSignInPage);
-router.post('/signin', httpSignIn);
+router.get('/login', getLogInPage);
+router.post('/login', httpLogIn);
 
 module.exports = router;

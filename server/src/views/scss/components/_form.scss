@@ -28,6 +28,9 @@
 }
 
 .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
   &__main {
     display: flex;
     flex-direction: column;
@@ -40,6 +43,10 @@
     .form-input {
       flex: 2;
     }
+  }
+  &__side {
+    color: $danger;
+    font-weight: $bold;
   }
 }
 
