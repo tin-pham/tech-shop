@@ -1,12 +1,41 @@
 <section class='links'>
-  <div class='links__endpoint'>
-    <p>GET</p>
-    <a href='/api/{{apiVer}}/phones'>/api/{{apiVer}}/phones</a>
+  <div class='endpoint'>
+    <p>GET All Phones</p>
+    <div class='endpoint__url'>
+      <p>GET</p>
+      <a href='/api/{{apiVer}}/phones'>/api/{{apiVer}}/phones</a>
+    </div>
   </div>
-  <div class='links__endpoint'>
-    <p>GET</p>
-    <a
-      href='/api/{{apiVer}}/phones/6257b5b5265535e2c810e6df'
-    >/api/{{apiVer}}/phones/:id</a>
+  <div class='endpoint'>
+    <p>GET Specific Phone</p>
+    <div class='endpoint__url'>
+      <p>GET</p>
+      <a href='/api/{{apiVer}}/phones/625657c7b7b41a9c198bdb94'>/api/{{apiVer}}/phones/:id</a>
+    </div>
+  </div>
+
+  <div class='endpoint'>
+    <p>GET phone with filter</p>
+
+    <form action='/api/{{apiVer}}/phones' class='form form-get'>
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='limit'>Limit</label>
+          <input type='number' id='limit' name='limit' min='0' />
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='page'>Page</label>
+          <input type='number' id='page' name='page' min='0' />
+        </div>
+      </div>
+
+      <button class='btn btn--primary' type='submit'>Get phones</button>
+    </form>
+
   </div>
 </section>
+
+<script src={{script}}> </script>

@@ -2,11 +2,12 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const { engine } = require('express-handlebars');
+const { engine, create } = require('express-handlebars');
 
-const vTestApi = require(`@routes/api`);
+const apiRouter = require(`@routes/api`);
 const clientRouter = require('@routes/client');
 const authRouter = require('@routes/auth/auth.router');
+const { checkCurrentUser } = require('@middlewares/auth.middleware');
 
 const app = express();
 
@@ -20,6 +21,11 @@ app.engine(
     defaultLayout: 'main',
     layoutsDir: path.resolve('src/views/layouts'),
     partialsDir: path.resolve('src/views/partials'),
+    helpers: {
+      isDefined(value) {
+        return value !== undefined;
+      },
+    },
   })
 );
 
@@ -28,8 +34,10 @@ app.use(express.json());
 app.use(express.static(path.resolve('src/public')));
 app.use(morgan('combined'));
 
+// WARNING: handlebar-express can't get the res.locals
+app.get('*', checkCurrentUser);
 app.use(authRouter);
+app.use('/api', apiRouter);
 app.use('/', clientRouter);
-app.use('/api', vTestApi);
 
 module.exports = app;

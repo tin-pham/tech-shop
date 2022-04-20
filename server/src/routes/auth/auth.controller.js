@@ -12,7 +12,11 @@ module.exports = {
       const user = await Users.login({ username, password });
 
       const token = createToken(user._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        maxAge: maxAge,
+        secure: false,
+      });
 
       return res.status(200).json({ id: user._id });
     } catch (errors) {
@@ -28,12 +32,20 @@ module.exports = {
       const newUser = await createUser({ username, password });
 
       const token = createToken(newUser._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        maxAge: maxAge,
+        secure: false,
+      });
 
       return res.status(201).json(newUser._id);
     } catch (errors) {
       return res.status(400).json(errors);
     }
+  },
+  httpLogOut(req, res) {
+    res.cookie('jwt', '', { maxAge: 1 });
+    return res.redirect('/');
   },
   getSignUpPage(req, res) {
     return res.render('templates/signup', { script: '/js/signup.client.js' });

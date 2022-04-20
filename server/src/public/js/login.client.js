@@ -19,6 +19,7 @@ form.addEventListener('submit', async (e) => {
     const res = await fetch('/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
+      credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json' },
     });
     console.log(res);

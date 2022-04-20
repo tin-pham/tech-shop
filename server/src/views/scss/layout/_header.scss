@@ -7,4 +7,14 @@
   &__button {
     font-size: 3rem;
   }
+  &__nav {
+    font-size: 2.5rem;
+    ul {
+      display: flex;
+      gap: 0.5em;
+    }
+    &__username {
+      font-size: 1.5rem;
+    }
+  }
 }

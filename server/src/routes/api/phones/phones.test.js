@@ -10,7 +10,7 @@ expect.extend({ toIncludeAllPartialMembers });
 const { getTestPhones } = require('@models/phones/phones.model');
 
 // ENVIRONMENT VARIABLE HERE
-require('dotenv').config({ path: path.resolve('env/.test.env') });
+require('dotenv').config({ path: path.resolve('src/env/.test.env') });
 console.log(process.env.MONGO_URL);
 const { mongoConnect, mongoDisconnect } = require('@services/mongo');
 const app = require('@src/app');

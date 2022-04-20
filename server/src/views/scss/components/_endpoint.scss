@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+
+.endpoint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-weight: $semi-bold;
+  }
+  &__url {
+    display: flex;
+    text-decoration: underline;
+  }
+}

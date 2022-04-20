@@ -7,7 +7,6 @@ function createToken(id) {
     expiresIn: maxAge,
   });
 
-  console.log(token);
   return token;
 }
 

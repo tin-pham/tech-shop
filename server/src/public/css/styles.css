@@ -468,7 +468,7 @@ h1 {
 }
 
 .form {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 input {
@@ -494,6 +494,16 @@ a {
 .header__button {
   font-size: 3rem;
 }
+.header__nav {
+  font-size: 2.5rem;
+}
+.header__nav ul {
+  display: flex;
+  gap: 0.5em;
+}
+.header__nav__username {
+  font-size: 1.5rem;
+}
 
 .home {
   display: flex;
@@ -513,7 +523,7 @@ a {
   align-items: center;
   flex-direction: column;
   gap: 1em;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .links {
@@ -523,13 +533,6 @@ a {
   flex-direction: column;
   gap: 0.5em;
   font-size: 2.5rem;
-}
-.links__endpoint {
-  display: flex;
-  justify-content: space-around;
-}
-.links__endpoint p {
-  font-weight: 600;
 }
 
 .form {
@@ -603,6 +606,33 @@ a {
 .btn--primary {
   background-color: hsl(344deg, 50%, 69%);
   color: hsl(36deg, 24%, 96%);
+}
+
+.nav {
+  font-size: 2.5rem;
+}
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.nav__username {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.endpoint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.endpoint p {
+  font-weight: 600;
+}
+.endpoint__url {
+  display: flex;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=styles.css.map */

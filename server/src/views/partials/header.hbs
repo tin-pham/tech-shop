@@ -1,5 +1,30 @@
 <header class='header'>
   <h1 class='header__logo'><a href='/'>Testing API</a></h1>
 
-  <button class='header__button'><a href='/login'><i class='las la-sign-in-alt'></i></a></button>
+  <nav class='nav'>
+
+    <ul>
+      {{#unless (isDefined username)}}
+      <li>
+        <i class='las la-sign-in-alt'></i>
+        <a href='/login'>Login</a>
+      </li>
+
+      <li>
+        <i class='las la-user-plus'></i>
+        <a href='/signup'>Sign Up</a>
+      </li>
+      {{else}}
+      <li class='nav__username'>
+        {{username}}
+      </li>
+      <li>
+        <i class='las la-sign-out-alt'></i>
+        <a href='/logout'>Logout</a>
+      </li>
+      {{/unless}}
+
+    </ul>
+  </nav>
+  <!-- <button class='header__button'><a href='/login'><i class='las la-sign-in-alt'></i></a></button> -->
 </header>

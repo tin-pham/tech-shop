@@ -41,7 +41,8 @@
     "@models": "./src/models",
     "@src": "./src",
     "@services": "./src/services",
-    "@env": "./env"
+    "@config": "./src/config",
+    "@middlewares": "./src/middlewares"
   },
   "jest": {
     "moduleNameMapper": {
@@ -51,7 +52,8 @@
       "@models(.*)": "<rootDir>/src/models/$1",
       "@src(.*)": "<rootDir>/src/$1",
       "@services(.*)": "<rootDir>/src/services/$1",
-      "@env(.*)": "<rootDir>/env/$1"
+      "@config(.*)": "<rootDir>/config/$1",
+      "@middlewares": "<rootDir>/src/middlewares/$1"
     }
   }
 }
