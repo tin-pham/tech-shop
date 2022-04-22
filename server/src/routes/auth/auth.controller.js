@@ -3,7 +3,7 @@ const Users = require('@models/users/users.mongo');
 
 const { createToken } = require('@services/jwt');
 
-const maxAge = 1 * 24 * 60 * 60;
+const oneDayInMiliSecond = 1 * 24 * 60 * 60 * 1000;
 module.exports = {
   async httpLogIn(req, res) {
     const { username, password } = req.body;
@@ -14,7 +14,7 @@ module.exports = {
       const token = createToken(user._id);
       res.cookie('jwt', token, {
         httpOnly: true,
-        maxAge: maxAge,
+        maxAge: oneDayInMiliSecond,
         secure: false,
       });
 
@@ -26,7 +26,6 @@ module.exports = {
   },
   async httpSignUp(req, res) {
     const { username, password } = req.body;
-    const maxAge = 1 * 24 * 60 * 60 * 1000;
 
     try {
       const newUser = await createUser({ username, password });
@@ -34,7 +33,7 @@ module.exports = {
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {
         httpOnly: true,
-        maxAge: maxAge,
+        maxAge: oneDayInMiliSecond,
         secure: false,
       });
 

@@ -1,9 +1,9 @@
 const form = document.querySelector('.form-login');
 
 function displayErrors(errors) {
-  const errorContainer = document.querySelectorAll('.errors');
+  const errorContainers = document.querySelectorAll('.errors');
 
-  errorContainer.forEach((container) => {
+  errorContainers.forEach((container) => {
     container.textContent = errors[container.dataset.name];
   });
 }

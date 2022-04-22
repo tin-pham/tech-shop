@@ -1,6 +1,14 @@
 // Prevent Submit from enter
 const form = document.querySelector('.form-phone');
 
+function displayErrors(errors) {
+  const errorContainers = document.querySelectorAll('.errors');
+
+  errorContainers.forEach((container) => {
+    container.textContent = errors[container.dataset.name];
+  });
+}
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -13,12 +21,20 @@ form.addEventListener('submit', async (e) => {
   const API_URL = 'http://localhost:8000/api/v0.2/phones';
 
   try {
-    await fetch(API_URL, {
-      methods: 'POST',
+    const res = await fetch(API_URL, {
+      method: 'POST',
       body: JSON.stringify({ name, category, brand, price, quantity }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw error;
+    } else {
+      const newPhone = await res.json();
+      location.assign(API_URL + `/${newPhone._id}`);
+    }
   } catch (err) {
-    console.error(err);
+    displayErrors(err);
   }
 });

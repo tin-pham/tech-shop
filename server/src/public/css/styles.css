@@ -535,6 +535,13 @@ a {
   font-size: 2.5rem;
 }
 
+.phones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: 1.5em;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -633,6 +640,20 @@ a {
 .endpoint__url {
   display: flex;
   text-decoration: underline;
+}
+
+.phone {
+  border: 1px solid hsl(0deg, 0%, 13%);
+  padding: 1em;
+}
+.phone__title {
+  font-weight: 600;
+}
+.phone__price {
+  font-weight: 300;
+}
+.phone__price::after {
+  content: "vnd";
 }
 
 /*# sourceMappingURL=styles.css.map */

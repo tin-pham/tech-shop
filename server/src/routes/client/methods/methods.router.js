@@ -3,12 +3,14 @@ const router = Router();
 
 const {
   getMethodsPage,
-  getGetMethodsPage,
-  getPostMethodsPage,
+  getGetMethodPage,
+  getPostMethodPage,
+  getUpdateMethodPage,
 } = require('./methods.controller');
 
 router.get('/', getMethodsPage);
-router.get('/get', getGetMethodsPage);
-router.get('/post', getPostMethodsPage);
+router.get('/get', getGetMethodPage);
+router.get('/post', getPostMethodPage);
+router.get('/update', getUpdateMethodPage);
 
 module.exports = router;

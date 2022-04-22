@@ -17,22 +17,25 @@
   <div class='endpoint'>
     <p>GET phone with filter</p>
 
-    <form action='/api/{{apiVer}}/phones' class='form form-get'>
+    <form action='/api/{{apiVer}}/phones' class='form form-get' autocomplete='off'>
       <div class='form-group'>
         <div class='form-group__main'>
           <label for='limit'>Limit</label>
-          <input type='number' id='limit' name='limit' min='0' />
+          <input data-filter='limit' type='number' id='limit' name='limit' min='0' value='0' />
         </div>
       </div>
 
       <div class='form-group'>
         <div class='form-group__main'>
           <label for='page'>Page</label>
-          <input type='number' id='page' name='page' min='0' />
+          <input data-filter='page' type='number' id='page' name='page' min='0' value='1' />
         </div>
       </div>
 
-      <button class='btn btn--primary' type='submit'>Get phones</button>
+      <div class='endpoint__url'>
+        <p>GET</p>
+        <a href='/api/{{apiVer}}/phones?limit=0&page=1'>/api/{{apiVer}}/phones?limit=0&page=1</a>
+      </div>
     </form>
 
   </div>

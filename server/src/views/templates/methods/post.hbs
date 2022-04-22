@@ -1,11 +1,12 @@
 <section>
-  <form class='form form-phone' method='POST'>
+  <form class='form form-phone' method='POST' autocomplete='off'>
     <div class='form-group'>
       <div class='form-group__main'>
 
         <label for='name'>Tên sản phẩm</label>
         <input type='text' id='name' name='name' class='form-input' />
       </div>
+      <div data-name='name' class='form-group__side errors'></div>
     </div>
     <div class='form-group'>
       <div class='form-group__main'>
@@ -18,6 +19,7 @@
           </optgroup>
         </select>
       </div>
+      <div data-name='category' class='form-group__side errors'></div>
     </div>
     <div class='form-group'>
       <div class='form-group__main'>
@@ -29,6 +31,7 @@
           <option value='Apple'>Apple</option>
         </select>
       </div>
+      <div data-name='brand' class='form-group__side errors'></div>
     </div>
 
     <div class='form-group'>
@@ -37,6 +40,7 @@
         <label for='price'>Giá gốc</label>
         <input type='number' id='price' name='price' min='0' step='1000' />
       </div>
+      <div data-name='price' class='form-group__side errors'></div>
     </div>
 
     <div class='form-group'>
@@ -45,6 +49,7 @@
         <label for='quantity'>Số lượng</label>
         <input type='text' id='quantity' name='quantity' />
       </div>
+      <div data-name='quantity' class='form-group__side errors'></div>
     </div>
 
     <button class='btn btn--primary' type='submit'>Tạo sản phẩm</button>
