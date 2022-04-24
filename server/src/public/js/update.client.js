@@ -1,30 +1,27 @@
-window.addEventListener('DOMContentLoaded', async function() {
-  const page = 1;
-  const limit = 5;
-  const API_URL = `http://localhost:8000/api/v0.2/phones?page=${page}&limit=${limit}`;
+const updateForm = document.querySelector('.form-update');
+
+updateForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const id = updateForm.id.value;
+  const name = updateForm.id.name;
+  const price = updateForm.id.price;
+
+  const newPhone = { name, price };
+  const API_URL = `/api/v0.2/phones/${id}`;
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL, {
+      method: 'PUT',
+      body: JSON.stringify(newPhone),
+    });
+
     if (!res.ok) {
-      const error = await res.json();
-      throw error;
+      const errors = await res.json();
+      throw errors;
     } else {
-      const phones = await res.json();
-      renderIphones(phones);
+      location.assign(API_URL);
     }
   } catch (errors) {
     console.error(errors);
   }
 });
-
-function renderIphones(phones) {
-  phones.forEach((phone) => {
-    console.log(phone);
-    const phoneDom = `
-      <li class="phone">
-        <h2 class="phone__title">${phone.title}</p>
-        <p class="phone__price">${phone.price}</p>
-      </li>
-    `;
-    document.querySelector('.phones').innerHTML += phoneDom;
-  });
-}
