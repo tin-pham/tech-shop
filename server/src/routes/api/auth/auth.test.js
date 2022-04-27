@@ -5,20 +5,21 @@ describe('Auth start', () => {
   const API_VERSION = process.env.API_VERSION;
   const API_SIGNUP = `/api/${API_VERSION}/signup`;
   const API_LOGIN = `/api/${API_VERSION}/login`;
-  describe(`POST ${API_LOGIN}`, () => {
-    const userWithInvalidField = {
-      username: 'i',
-      password: ':v',
-      test: true,
-    };
-    const userWithoutField = {
-      test: true,
-    };
-    const user = {
-      username: 'testing',
-      password: 'test12345',
-      test: true,
-    };
+
+  const userWithInvalidField = {
+    username: 'i',
+    password: ':v',
+    test: true,
+  };
+  const userWithoutField = {
+    test: true,
+  };
+  const user = {
+    username: 'testing',
+    password: 'test12345',
+    test: true,
+  };
+  describe(`POST ${API_SIGNUP}`, () => {
     it('Should catch error if required field was empty', async () => {
       const response = await request(app)
         .post(API_SIGNUP)
@@ -56,6 +57,22 @@ describe('Auth start', () => {
       const newUser = response.body;
 
       expect(newUser.username).toBe(user.username);
+    });
+  });
+
+  describe(`POST ${API_LOGIN}`, () => {
+    it(`Should catch error if user input was invalid with status code 401`, async () => {
+      const response = await request(app)
+        .post(API_LOGIN)
+        .send(userWithInvalidField)
+        .expect('Content-Type', /json/)
+        .expect(401);
+
+      const errors = response.body;
+
+      expect(errors).toMatchObject({
+        error: 'Tên người dùng hoặc mật khẩu sai',
+      });
     });
   });
 });

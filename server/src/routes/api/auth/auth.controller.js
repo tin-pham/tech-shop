@@ -27,7 +27,7 @@ module.exports = {
     const { username, password } = req.body;
 
     try {
-      const newUser = await createUser({ username, password });
+      const newUser = await createUser(req.body);
 
       const token = createToken(newUser._id);
       res.cookie('jwt', token, {

@@ -20,7 +20,17 @@ async function createUser(user) {
   }
 }
 
+async function deleteAllTestUsers() {
+  try {
+    const result = await Users.deleteMany({ test: true });
+    return result;
+  } catch (errors) {
+    return errors;
+  }
+}
+
 module.exports = {
   getAllUsers,
   createUser,
+  deleteAllTestUsers,
 };

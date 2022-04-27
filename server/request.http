@@ -50,4 +50,12 @@ Content-Type: application/json
   "password": "a"
 }
 
+POST http://localhost:8000/api/v0.2/login
+Content-Type: application/json
+
+{
+ "username": "mimim",
+ "password": "1234"
+}
+
 
