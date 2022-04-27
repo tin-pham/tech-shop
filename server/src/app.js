@@ -6,7 +6,7 @@ const { engine } = require('express-handlebars');
 
 const apiRouter = require(`@routes/api`);
 const clientRouter = require('@routes/client');
-const authRouter = require('@routes/auth/auth.router');
+// const authRouter = require('@routes/auth/auth.router');
 const { checkCurrentUser } = require('@middlewares/auth.middleware');
 
 const app = express();
@@ -36,7 +36,7 @@ app.use(morgan('combined'));
 
 // WARNING: handlebar-express can't get the res.locals
 app.get('*', checkCurrentUser);
-app.use(authRouter);
+//app.use(authRouter);
 app.use('/api', apiRouter);
 app.use('/', clientRouter);
 

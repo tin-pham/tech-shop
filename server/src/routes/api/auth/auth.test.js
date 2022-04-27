@@ -1,9 +1,11 @@
 const request = require('supertest');
-
 const app = require('@src/app');
 
 describe('Auth start', () => {
-  describe('POST /signup', () => {
+  const API_VERSION = process.env.API_VERSION;
+  const API_SIGNUP = `/api/${API_VERSION}/signup`;
+  const API_LOGIN = `/api/${API_VERSION}/login`;
+  describe(`POST ${API_LOGIN}`, () => {
     const userWithInvalidField = {
       username: 'i',
       password: ':v',
@@ -19,7 +21,7 @@ describe('Auth start', () => {
     };
     it('Should catch error if required field was empty', async () => {
       const response = await request(app)
-        .post('/signup')
+        .post(API_SIGNUP)
         .send(userWithoutField)
         .expect('Content-Type', /json/)
         .expect(400);
@@ -33,7 +35,7 @@ describe('Auth start', () => {
 
     it('Should catch error if input was invalid', async () => {
       const response = await request(app)
-        .post('/signup')
+        .post(API_SIGNUP)
         .send(userWithInvalidField)
         .expect('Content-Type', /json/)
         .expect(400);
@@ -46,7 +48,7 @@ describe('Auth start', () => {
     });
     it('Should create a user with 201 status code', async () => {
       const response = await request(app)
-        .post('/signup')
+        .post(API_SIGNUP)
         .send(user)
         .expect('Content-Type', /json/)
         .expect(201);

@@ -1,5 +1,3 @@
-const { getAllPhones } = require('@models/phones/phones.model');
-
 module.exports = {
   getMethodsPage(req, res) {
     return res.render('templates/methods/methods', {

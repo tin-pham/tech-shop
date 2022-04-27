@@ -15,7 +15,7 @@ signUpForm.addEventListener('submit', async (e) => {
   const password = signUpForm.password.value;
 
   try {
-    const res = await fetch('/signup', {
+    const res = await fetch('/api/v0.2/signup', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },

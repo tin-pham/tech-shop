@@ -1,7 +1,6 @@
 const { createUser } = require('@models/users/users.model');
-const Users = require('@models/users/users.mongo');
-
 const { createToken } = require('@services/jwt');
+const Users = require('@models/users/users.mongo');
 
 const oneDayInMiliSecond = 1 * 24 * 60 * 60 * 1000;
 module.exports = {
@@ -37,7 +36,9 @@ module.exports = {
         secure: false,
       });
 
-      return res.status(201).json({id: newUser._id, username: newUser.username});
+      return res
+        .status(201)
+        .json({ id: newUser._id, username: newUser.username });
     } catch (errors) {
       return res.status(400).json(errors);
     }
@@ -45,11 +46,5 @@ module.exports = {
   httpLogOut(req, res) {
     res.cookie('jwt', '', { maxAge: 1 });
     return res.redirect('/');
-  },
-  getSignUpPage(req, res) {
-    return res.render('templates/signup', { script: '/js/signup.client.js' });
-  },
-  getLogInPage(req, res) {
-    return res.render('templates/login', { script: '/js/login.client.js' });
   },
 };
