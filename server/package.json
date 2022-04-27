@@ -46,8 +46,12 @@
     "@middlewares": "./src/middlewares"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/src/config/jest/setup-env.js"], 
-    "setupFilesAfterEnv": ["<rootDir>/src/config/jest/setup-afterenv.js"],
+    "setupFiles": [
+      "<rootDir>/src/config/jest/setup-env.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/config/jest/setup-afterenv.js"
+    ],
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
       "@api(.*)": "<rootDir>/src/routes/api/$1",
