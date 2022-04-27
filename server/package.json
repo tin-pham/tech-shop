@@ -46,6 +46,7 @@
     "@middlewares": "./src/middlewares"
   },
   "jest": {
+    "testTimeout": 90000,
     "setupFiles": [
       "<rootDir>/src/config/jest/setup-env.js"
     ],
