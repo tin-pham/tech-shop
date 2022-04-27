@@ -17,6 +17,10 @@ const UserSchema = new Schema({
   },
   name: String,
   addresses: [String],
+  test: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 UserSchema.pre('save', async function(next) {
@@ -34,7 +38,6 @@ UserSchema.statics.login = async function({ username, password }) {
   }
 
   const auth = await bcrypt.compare(password, user.password);
-  console.log(auth);
   if (!auth) {
     throw Error('Tên người dùng hoặc mật khẩu sai');
   }

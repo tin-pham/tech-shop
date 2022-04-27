@@ -27,4 +27,11 @@ module.exports = {
       script: '/js/update.client.js',
     });
   },
+  getDeleteMethodPage(req, res) {
+    return res.render('templates/methods/delete', {
+      username: res.locals.user?.username,
+      apiVer: global.apiVer,
+      script: '/js/delete.client.js',
+    });
+  },
 };

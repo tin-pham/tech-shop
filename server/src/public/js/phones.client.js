@@ -1,5 +1,5 @@
 // Prevent Submit from enter
-const form = document.querySelector('.form-phone');
+const phoneForm = document.querySelector('.form-phone');
 
 function displayErrors(errors) {
   const errorContainers = document.querySelectorAll('.errors');
@@ -9,21 +9,61 @@ function displayErrors(errors) {
   });
 }
 
-form.addEventListener('submit', async (e) => {
+function getVariations() {
+  const variations = [];
+  const variationElements = phoneForm['variations[]'];
+  for (let i = 0; i < variationElements.length; i++) {
+    variations.push(variationElements[i].value);
+  }
+
+  return variations;
+}
+
+function getBundles() {
+  const bundles = [];
+  const bundleNameElements = phoneForm['bundle-name[]'];
+  const bundlePriceElements = phoneForm['bundle-price[]'];
+
+  const bundleLength = bundleNameElements.length;
+  for (let i = 0; i < bundleLength; i++) {
+    bundles.push({
+      name: bundleNameElements[i].value,
+      price: bundlePriceElements[i].value,
+    });
+  }
+
+  return bundles;
+}
+
+phoneForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const name = form.name.value;
-  const category = form.category.value;
-  const brand = form.brand.value;
-  const price = form.price.value;
-  const quantity = form.quantity.value;
+  const name = phoneForm.name.value;
+  const category = phoneForm.category.value;
+  const brand = phoneForm.brand.value;
+  const price = phoneForm.price.value;
+  const quantity = phoneForm.quantity.value;
+  const variations = getVariations();
+  const bundles = getBundles();
+  const description = phoneForm.description.value;
+
+  const phone = {
+    name,
+    category,
+    brand,
+    price,
+    quantity,
+    variations,
+    bundles,
+    description,
+  };
 
   const API_URL = 'http://localhost:8000/api/v0.2/phones';
 
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
-      body: JSON.stringify({ name, category, brand, price, quantity }),
+      body: JSON.stringify(phone),
       headers: { 'Content-Type': 'application/json' },
     });
 

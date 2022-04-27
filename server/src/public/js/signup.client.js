@@ -1,4 +1,4 @@
-const form = document.querySelector('.form-signup');
+const signUpForm = document.querySelector('.form-signup');
 
 function displayErrors(errors) {
   const errorContainer = document.querySelectorAll('.errors');
@@ -8,11 +8,11 @@ function displayErrors(errors) {
   });
 }
 
-form.addEventListener('submit', async (e) => {
+signUpForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const username = form.username.value;
-  const password = form.password.value;
+  const username = signUpForm.username.value;
+  const password = signUpForm.password.value;
 
   try {
     const res = await fetch('/signup', {

@@ -37,7 +37,7 @@ module.exports = {
         secure: false,
       });
 
-      return res.status(201).json(newUser._id);
+      return res.status(201).json({id: newUser._id, username: newUser.username});
     } catch (errors) {
       return res.status(400).json(errors);
     }

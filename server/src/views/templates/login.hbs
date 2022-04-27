@@ -1,23 +1,26 @@
 <form class='form form-login'>
-  <h2 class='form__title'>Đăng nhập</h2>
-  <div class='form-group'>
-    <div class='form-group__main'>
-      <label for='username'>Tên đăng nhập</label>
-      <input type='text' name='username' id='username' />
+  <div class='form-container'>
+
+    <h2 class='form__title'>Đăng nhập</h2>
+    <div class='form-group'>
+      <div class='form-group__main'>
+        <label for='username'>Tên đăng nhập</label>
+        <input type='text' name='username' id='username' />
+      </div>
+
     </div>
 
-  </div>
-
-  <div class='form-group'>
-    <div class='form-group__main'>
-      <label for='password'>Mật khẩu</label>
-      <input type='password' name='password' id='password' />
+    <div class='form-group'>
+      <div class='form-group__main'>
+        <label for='password'>Mật khẩu</label>
+        <input type='password' name='password' id='password' />
+      </div>
+      <!-- error object that will have { error: ... } will display inside this (thanks for data-name='error')-->
+      <div data-name='error' class='form-group__side errors'></div>
     </div>
-    <!-- error object that will have { error: ... } will display inside this (thanks for data-name='error')-->
-    <div data-name='error' class='form-group__side errors'></div>
-  </div>
 
-  <button class='btn btn--primary'>Đăng nhập</button>
+    <button class='btn btn--primary'>Đăng nhập</button>
+  </div>
 </form>
 
 <script src={{script}}></script>

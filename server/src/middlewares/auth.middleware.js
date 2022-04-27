@@ -5,7 +5,6 @@ const Users = require('@models/users/users.mongo');
 module.exports = {
   auth(req, res, next) {
     const token = req.cookies.jwt;
-    console.log(token);
 
     if (!token) {
       return res.redirect('/login');

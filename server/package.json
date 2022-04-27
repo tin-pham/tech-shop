@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "build": "webpack",
     "inspect": "node --inspect src/server.js",
     "watch": "nodemon src/server.js",
     "test": "jest --runInBand --detectOpenHandles --forceExit",
@@ -45,6 +46,8 @@
     "@middlewares": "./src/middlewares"
   },
   "jest": {
+    "setupFiles": ["<rootDir>/src/config/jest/setup-env.js"], 
+    "setupFilesAfterEnv": ["<rootDir>/src/config/jest/setup-afterenv.js"],
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
       "@api(.*)": "<rootDir>/src/routes/api/$1",
@@ -52,8 +55,14 @@
       "@models(.*)": "<rootDir>/src/models/$1",
       "@src(.*)": "<rootDir>/src/$1",
       "@services(.*)": "<rootDir>/src/services/$1",
-      "@config(.*)": "<rootDir>/config/$1",
-      "@middlewares": "<rootDir>/src/middlewares/$1"
+      "@config(.*)": "<rootDir>/src/config/$1",
+      "@middlewares(.*)": "<rootDir>/src/middlewares/$1"
+    },
+    "globals": {
+      "__API_VERSION__": "v0.2",
+      "__API_URL__": "/api/v0.2",
+      "__API_PHONES__": "/api/v0.2/phones",
+      "__API_USERS__": "/api/v0.2/users"
     }
   }
 }

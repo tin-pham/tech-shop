@@ -4,46 +4,45 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 // More utils to work with Jest
-const { toIncludeAllPartialMembers } = require('jest-extended');
-expect.extend({ toIncludeAllPartialMembers });
+const { toIncludeAllPartialMembers, toContainValues } = require('jest-extended');
+expect.extend({ toIncludeAllPartialMembers, toContainValues});
 
 const { getTestPhones } = require('@models/phones/phones.model');
 
 // ENVIRONMENT VARIABLE HERE
-require('dotenv').config({ path: path.resolve('src/env/.test.env') });
-console.log(process.env.MONGO_URL);
+// require('dotenv').config({ path: path.resolve('src/config/.test.env') });
 const { mongoConnect, mongoDisconnect } = require('@services/mongo');
 const app = require('@src/app');
 
 describe('Launches products API', () => {
-  const apiVer = 'v0.2';
+  const API_URL = `/api/${process.env.API_VERSION}/phones`;
 
-  beforeAll(async () => {
-    await mongoConnect();
-  });
+  // beforeAll(async () => {
+  //   await mongoConnect();
+  // });
 
-  afterAll(async () => {
-    await mongoDisconnect();
-  });
+  // afterAll(async () => {
+  //   await mongoDisconnect();
+  // });
 
-  describe(`GET /api/${apiVer}/phones`, () => {
-    test('It should response with 200 status code', async () => {
+  describe(`GET ${API_URL}`, () => {
+    it('Should response with 200 status code', async () => {
       await request(app)
-        .get(`/api/${apiVer}/phones`)
+        .get(API_URL)
         .expect('Content-Type', /json/)
         .expect(200);
     });
   });
 
-  describe(`GET /api/${apiVer}/phones/?page=1&limit=2 and ?page=2&limit2`, () => {
-    test('It should get the 2 page of request with two different object', async () => {
+  describe(`GET ${API_URL}/?filter`, () => {
+    it('Should get the 2 page of request with two different object', async () => {
       const response1 = await request(app)
-        .get(`/api/${apiVer}/phones/?page=1&limit=2`)
+        .get(`${API_URL}?page=1&limit=2`)
         .expect('Content-Type', /json/)
         .expect(200);
 
       const response2 = await request(app)
-        .get(`/api/${apiVer}/phones/?page=2&limit2`)
+        .get(`${API_URL}?page=2&limit2`)
         .expect('Content-Type', /json/)
         .expect(200);
 
@@ -52,56 +51,73 @@ describe('Launches products API', () => {
       const page2 = response2.body;
       expect(page1).not.toStrictEqual(page2);
     });
-  });
+    it('Should get object with some filter', async() => {
+      const response = await request(app) 
+      .get(`${API_URL}?brand=Nokia&priceFrom=1000`)
+      .expect('Content-Type', /json/)
+      .expect(200)
 
-  describe(`POST /api/${apiVer}/phones`, () => {
+      const phones = response.body;
+      expect(phones).toIncludeAllPartialMembers([{ brand: 'Nokia'}]);
+    })
+  })
+
+  describe(`POST ${API_URL}`, () => {
     const phoneWithoutRequiredField = { test: true };
     const phoneWithInvalidField = {
-      title: 'abc',
-      price: 'abc',
+      name: 'abc',
+      price: '120',
+      category: 'Điện thoại thông minh',
       test: true,
     };
     const phone = {
       name: 'Vivo Y21 4GB + 64GB',
       description:
         'Dù sở hữu dung lượng pin lớn tới 5000mAh nhưng Y21 vẫn mang một thân máy mỏng nhẹ chỉ 8.0mm với thiết kế Khung Viền Phẳng 2.5D, mang đến cảm giác cầm nắm thoải mái và cao cấp.',
-      category: ['smartphone'],
+      category: 'Điện thoại thông minh',
       brand: 'Vivo',
       variations: ['Trắng', 'Đen'],
-      bundles: ['Điện thoai', 'Điện thoại + Sạc'],
-      price: [3550000, 4000000],
+      bundles: [
+        {
+          name: 'Điện thoại + Sạc',
+          price: 3100000
+        },
+        {
+      name: 'Điện thoại + Ốp lưng',
+          price: 3200000
+        }
+      ],
+      price: 3000000,
       test: true,
     };
 
-    test('It should catch error if required field is empty', async () => {
+    it('Should catch error if required field is empty', async () => {
       const response = await request(app)
-        .post(`/api/${apiVer}/phones`)
+        .post(API_URL)
         .send(phoneWithoutRequiredField)
         .expect('Content-Type', /json/)
         .expect(400);
 
-      expect(response.body.errors).toIncludeAllPartialMembers([
-        { msg: 'Tên sản phẩm không được để trống' },
-        { msg: 'Giá sản phẩm không được để trống' },
-      ]);
+
+      const errors = response.body;
+
+      expect(errors).toContainValues(['Vui lòng nhập tên sản phẩm', 'Vui lòng nhập giá sản phẩm',  'Vui lòng nhập danh mục sản phẩm' ])
     });
 
-    test('It should catch error if field is not valid', async () => {
+    it('Should catch error if field is not valid', async () => {
       const response = await request(app)
-        .post(`/api/${apiVer}/phones`)
+        .post(API_URL)
         .send(phoneWithInvalidField)
         .expect('Content-Type', /json/)
         .expect(400);
 
-      expect(response.body.errors).toIncludeAllPartialMembers([
-        { msg: 'Tên sản phẩm phải từ 5 đến 128 kí tự' },
-        { msg: 'Giá sản phẩm phải là số' },
-      ]);
+      const errors = response.body;
+      expect(errors).toContainValues(['Tên sản phẩm phải có ít nhất 4 kí tự' ])
     });
 
-    test('It should created a new phone with 201 status code', async () => {
+    it('Should created a new phone with 201 status code', async () => {
       const response = await request(app)
-        .post(`/api/${apiVer}/phones`)
+        .post(API_URL)
         .send(phone)
         .expect('Content-Type', /json/)
         .expect(201);
@@ -110,12 +126,12 @@ describe('Launches products API', () => {
     });
   });
 
-  describe(`GET /api/${apiVer}/phones/:id`, () => {
-    test('It should return all test phones', async () => {
+  describe(`GET ${API_URL}/:id`, () => {
+    it('Should return all test phones', async () => {
       const testPhones = await getTestPhones();
       for (const phone of testPhones) {
         const response = await request(app)
-          .get(`/api/${apiVer}/phones/${phone._id}`)
+          .get(`${API_URL}/${phone._id}`)
           .expect('Content-Type', /json/)
           .expect(200);
 
@@ -124,12 +140,36 @@ describe('Launches products API', () => {
     });
   });
 
-  describe(`DELETE /api/${apiVer}/phones/:id`, () => {
-    test('It should delete all test phones', async () => {
+  describe('PUT ${API_URL}/:id', () => {
+
+    const updatePhone = {
+      brand: 'Test Brand'
+    }
+    it('Should update the phone at :id', async() => {
+      const testPhones = await getTestPhones();
+
+      for(const phone of testPhones) {
+        const response = await request(app)
+        .put(`${API_URL}/${phone._id}`)
+        .send(updatePhone)
+        .expect('Content-Type', /json/)
+        .expect(200)
+
+        const updatedPhone = response.body;
+        expect(updatedPhone).toMatchObject({
+          brand: 'Test Brand'
+        })
+      }
+    })
+  }) 
+
+
+  describe(`DELETE ${API_URL}/:id`, () => {
+    it('Should delete all test phones', async () => {
       const testPhones = await getTestPhones();
       for (let phone of testPhones) {
         const response = await request(app)
-          .delete(`/api/${apiVer}/phones/${phone._id}`)
+          .delete(`${API_URL}/${phone._id}`)
           .expect('Content-Type', /json/)
           .expect(200);
 

@@ -1,58 +1,100 @@
 <section>
-  <form class='form form-phone' method='POST' autocomplete='off'>
-    <div class='form-group'>
-      <div class='form-group__main'>
+  <form class='form form-phone' action='api/{{apiVer}}/phones' method='POST' autocomplete='off'>
+    <div class='form-container'>
+      <div class='form-group'>
+        <div class='form-group__main'>
 
-        <label for='name'>Tên sản phẩm</label>
-        <input type='text' id='name' name='name' class='form-input' />
+          <label for='name'>Tên sản phẩm</label>
+          <input type='text' id='name' name='name' class='form-input' />
+        </div>
+        <div data-name='name' class='form-group__side errors'></div>
       </div>
-      <div data-name='name' class='form-group__side errors'></div>
-    </div>
-    <div class='form-group'>
-      <div class='form-group__main'>
+      <div class='form-group'>
+        <div class='form-group__main'>
 
-        <label for='category'>Danh mục sản phẩm</label>
-        <select name='category' id='category' class='form-input'>
-          <optgroup label='Điện thoại'>
-            <option value='Điện thoại nút bấm'>Điện thoại nút bấm</option>
-            <option value='Điện thoại thông minh'>Điện thoại thông minh</option>
-          </optgroup>
-        </select>
+          <label for='category'>Danh mục sản phẩm</label>
+          <select name='category' id='category' class='form-input'>
+            <optgroup label='Điện thoại'>
+              <option value='Điện thoại nút bấm'>Điện thoại nút bấm</option>
+              <option value='Điện thoại thông minh'>Điện thoại thông minh</option>
+            </optgroup>
+          </select>
+        </div>
+        <div data-name='category' class='form-group__side errors'></div>
       </div>
-      <div data-name='category' class='form-group__side errors'></div>
-    </div>
-    <div class='form-group'>
-      <div class='form-group__main'>
+      <div class='form-group'>
+        <div class='form-group__main'>
 
-        <label for='brand'>Nhãn hiệu</label>
-        <select name='brand' id='brand' class='form-input'>
-          <option value='Nokia'>Nokia</option>
-          <option value='Samsung'>Samsung</option>
-          <option value='Apple'>Apple</option>
-        </select>
+          <label for='brand'>Nhãn hiệu</label>
+          <select name='brand' id='brand' class='form-input'>
+            <option value='Nokia'>Nokia</option>
+            <option value='Samsung'>Samsung</option>
+            <option value='Apple'>Apple</option>
+          </select>
+        </div>
+        <div data-name='brand' class='form-group__side errors'></div>
       </div>
-      <div data-name='brand' class='form-group__side errors'></div>
-    </div>
 
-    <div class='form-group'>
-      <div class='form-group__main'>
+      <div class='form-group'>
+        <div class='form-group__main'>
 
-        <label for='price'>Giá gốc</label>
-        <input type='number' id='price' name='price' min='0' step='1000' />
+          <label for='price'>Giá gốc</label>
+          <input type='number' id='price' name='price' min='0' step='1000' />
+        </div>
+        <div data-name='price' class='form-group__side errors'></div>
       </div>
-      <div data-name='price' class='form-group__side errors'></div>
-    </div>
 
-    <div class='form-group'>
-      <div class='form-group__main'>
+      <div class='form-group'>
+        <div class='form-group__main'>
 
-        <label for='quantity'>Số lượng</label>
-        <input type='text' id='quantity' name='quantity' />
+          <label for='quantity'>Số lượng có sẵn</label>
+          <input type='text' id='quantity' name='quantity' />
+        </div>
+        <div data-name='quantity' class='form-group__side errors'></div>
       </div>
-      <div data-name='quantity' class='form-group__side errors'></div>
     </div>
 
-    <button class='btn btn--primary' type='submit'>Tạo sản phẩm</button>
+    <div class='form-container'>
+
+      <div class='form-group'>
+        <fieldset class='form-group__main'>
+          <legend>
+            Mẫu mã
+          </legend>
+
+          <input type='text' name='variations[]' />
+          <input type='text' name='variations[]' />
+          <input type='text' name='variations[]' />
+        </fieldset>
+      </div>
+      <div class='form-group'>
+        <fieldset class='form-group__main'>
+          <legend>
+            Gói sản phẩm
+          </legend>
+
+          <div class='form-group-inner'>
+            <label for='bundle-name[]'>Tên gói sản phẩm và giá</label>
+            <input type='text' name='bundle-name[]' />
+            <input type='number' name='bundle-price[]' />
+          </div>
+          <div class='form-group-inner'>
+            <label for='bundle-name[]'>Tên gói sản phẩm và giá</label>
+            <input type='text' name='bundle-name[]' />
+            <input type='number' name='bundle-price[]' />
+          </div>
+        </fieldset>
+      </div>
+
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='description'>Miêu tả sản phẩm</label>
+          <textarea name='description' id='description'></textarea>
+        </div>
+      </div>
+      <button class='btn btn--primary' type='submit'>Tiếp tục</button>
+    </div>
+
   </form>
 </section>
 

@@ -7,9 +7,20 @@ const { getPagination } = require('@services/query');
 const { formatErrors } = require('@services/utils');
 
 async function getAllPhones(query) {
-  const { limit, skip } = getPagination(query);
+  const { limit, skip } = getPagination({
+    limit: query.limit,
+    page: query.page,
+  });
 
-  return await Phones.find({}, { __v: 0 }).skip(skip).limit(limit);
+  const brandName = new RegExp(`${query.brand}`);
+
+  const filter = {
+    brand: { $regex: brandName, $options: 'i' },
+    price: { $gte: query.priceFrom, $lte: query.priceTo },
+    quantity: { $gte: query.quantity },
+  };
+
+  return await Phones.find(filter, { __v: 0 }).skip(skip).limit(limit);
 }
 
 async function getPhoneById(id) {
@@ -21,6 +32,21 @@ async function addPhone(phone) {
     const { _id } = await Phones.create(phone);
     return await getPhoneById(_id);
   } catch (errors) {
+    throw formatErrors(errors);
+  }
+}
+async function updatePhone(newPhone) {
+  try {
+    const phone = await Phones.findById(ObjectId(newPhone._id));
+    Object.assign(phone, {
+      _id: new ObjectId(newPhone._id),
+      ...newPhone,
+    });
+
+    await phone.save();
+    return phone;
+  } catch (errors) {
+    console.log(errors);
     throw formatErrors(errors);
   }
 }
@@ -41,6 +67,7 @@ module.exports = {
   getAllPhones,
   getPhoneById,
   addPhone,
+  updatePhone,
   deletePhone,
   getTestPhones,
 };

@@ -1,4 +1,4 @@
-const form = document.querySelector('.form-login');
+const loginForm = document.querySelector('.form-login');
 
 function displayErrors(errors) {
   const errorContainers = document.querySelectorAll('.errors');
@@ -8,11 +8,11 @@ function displayErrors(errors) {
   });
 }
 
-form.addEventListener('submit', async (e) => {
+loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const username = form.username.value;
-  const password = form.password.value;
+  const username = loginForm.username.value;
+  const password = loginForm.password.value;
   console.log(username, password);
 
   try {
@@ -22,7 +22,6 @@ form.addEventListener('submit', async (e) => {
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(res);
     if (!res.ok) {
       const json = await res.json();
       throw json;

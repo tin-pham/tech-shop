@@ -18,23 +18,57 @@
     <p>GET phone with filter</p>
 
     <form action='/api/{{apiVer}}/phones' class='form form-get' autocomplete='off'>
-      <div class='form-group'>
-        <div class='form-group__main'>
-          <label for='limit'>Limit</label>
-          <input data-filter='limit' type='number' id='limit' name='limit' min='0' value='0' />
-        </div>
-      </div>
+      <div class='form-container'>
 
-      <div class='form-group'>
-        <div class='form-group__main'>
-          <label for='page'>Page</label>
-          <input data-filter='page' type='number' id='page' name='page' min='0' value='1' />
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='limit'>Limit</label>
+            <input data-filter='limit' type='number' id='limit' name='limit' min='0' value='0' />
+          </div>
         </div>
-      </div>
 
-      <div class='endpoint__url'>
-        <p>GET</p>
-        <a href='/api/{{apiVer}}/phones?limit=0&page=1'>/api/{{apiVer}}/phones?limit=0&page=1</a>
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='page'>Page</label>
+            <input data-filter='page' type='number' id='page' name='page' min='0' value='1' />
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='name'>Sản phẩm muốn tìm</label>
+            <input data-filter='name' type='text' id='name' name='name' />
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='category'>Danh mục sản phẩm</label>
+            <input data-filter='category' type='text' id='category' name='category' />
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='price-from'>Giá thấp nhất</label>
+            <input data-filter='priceFrom' type='number' id='price-from' name='priceFrom' min='0' step='1000' />
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='price-to'>Giá cao nhất</label>
+            <input data-filter='priceTo' type='number' id='price-to' name='priceTo' min='0' step='1000' />
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='form-group__main'>
+            <label for='quantity'>Số lượng từ</label>
+            <input data-filter='quantity' type='number' id='quantity' name='quantity' min='0' />
+          </div>
+        </div>
+
+        <div class='endpoint__url'>
+          <p>GET</p>
+          <a href='/api/{{apiVer}}/phones?limit=0&page=1'>/api/{{apiVer}}/phones?limit=0&page=1</a>
+        </div>
       </div>
     </form>
 

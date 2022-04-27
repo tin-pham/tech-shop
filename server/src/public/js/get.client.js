@@ -1,23 +1,33 @@
-const form = document.querySelector('.form-get');
+const getForm = document.querySelector('.form-get');
 
-form.addEventListener('submit', async (e) => {
+getForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const limit = form.limit.value;
-  const page = form.page.value;
+  const limit = getForm.limit.value;
+  const page = getForm.page.value;
 
   const endpoint = `http://localhost:8000/api/v0.2/phones?page=${page}&limit=${limit}`;
 
   location.assign(endpoint);
 });
 
-form.addEventListener('change', (e) => {
+getForm.addEventListener('change', (e) => {
   const endPointUrl = document.querySelector('.form .endpoint__url a');
 
   const paramsObj = {
-    limit: form.limit.value,
-    page: form.page.value,
+    limit: getForm.limit.value,
+    page: getForm.page.value,
+    name: getForm.name.value,
+    priceFrom: getForm.priceFrom.value,
+    priceTo: getForm.priceTo.value,
+    quantity: getForm.quantity.value,
   };
+
+  Object.keys(paramsObj).forEach(
+    (key) => paramsObj[key] === '' && delete paramsObj[key]
+  );
+
+  console.log(paramsObj);
 
   const searchParams = new URLSearchParams(paramsObj);
 

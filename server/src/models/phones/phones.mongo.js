@@ -5,7 +5,7 @@ const phoneSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Vui lòng nhập tên sản phẩm'],
-    minlength: [5, 'Tên sản phẩm phải có ít nhất 5 kí tự'],
+    minlength: [4, 'Tên sản phẩm phải có ít nhất 4 kí tự'],
   },
   category: {
     type: String,
@@ -14,10 +14,12 @@ const phoneSchema = new Schema({
   description: String,
   brand: String,
   variations: [String],
-  bundles: {
-    name: String,
-    price: Number,
-  },
+  bundles: [
+    {
+      name: String,
+      price: Number,
+    },
+  ],
   quantity: Number,
   price: {
     type: Number,

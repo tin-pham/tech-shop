@@ -1,17 +1,21 @@
-GET http://localhost:8000/api/v1/smartphones
+GET http://localhost:8000/api/v0.2/phones
 
 GET http://localhost:8000/api/v1/smartphones/625379c6e50a565fddb4d97b
 
-POST http://localhost:8000/api/v1/smartphones
+POST http://localhost:8000/api/v0.2/phones
 Content-Type: application/json
+
 {
-  "title": "",
-  "price": "120"
+  "name": "abc",
+  "price": "120",
+  "category": "Điện thoại thông minh",
+  "test": true
 }
 
 
 POST http://localhost:8000/api/v1/smartphones
 Content-Type: application/json
+
 {
     "title": "Samsung Galaxy Tab A 8 Inch",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum",
@@ -20,5 +24,30 @@ Content-Type: application/json
     "price": 2790000,
 }
 
+
+PUT http://localhost:8000/api/v0.2/phones/62636809a7a1ec05d8564928
+Content-Type: application/json
+
+{
+  "name": "Điện thoại củ cải"
+}
+
 DELETE http://localhost:8000/api/v1/smartphones/6253fd85a1540b4c1c21070c
+
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{ 
+  "username": "testingtesting",
+  "password": "123456779"
+}
+
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{ 
+  "username": "a",
+  "password": "a"
+}
+
 
