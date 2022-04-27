@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install:server": "npm install --prefix server",
+    "install-dev:server": "npm install --only-dev --prefix server",
     "server": "npm run watch --prefix server",
     "inspect": "npm run inspect --prefix server",
     "test:api": "npm run test --prefix server"
