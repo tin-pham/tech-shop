@@ -1,0 +1,143 @@
+[
+  {
+    "_id": {
+      "$oid": "625379c6e50a565fddb4d97b"
+    },
+    "name": "Iphone 13 Pro Max 256GB",
+    "category": "Điện thoại thông minh",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique enim et fringilla tincidunt. Proin ac mi mauris. Aliquam et hendrerit felis, vitae tempus turpis. Aenean luctus, risus eget maximus convallis, augue felis viverra ligula, eget tincidunt lacus lectus a risus. Maecenas laoreet id magna at fringilla",
+    "brand": "Apple",
+    "price": 36990000
+  },
+  {
+    "_id": {
+      "$oid": "62555c20179b75d105616180"
+    },
+    "name": "Vivo Y21 4GB + 64GB",
+    "category": "Điện thoại thông minh",
+    "description": "Dù sở hữu dung lượng pin lớn tới 5000mAh nhưng Y21 vẫn mang một thân máy mỏng nhẹ chỉ 8.0mm với thiết kế Khung Viền Phẳng 2.5D, mang đến cảm giác cầm nắm thoải mái và cao cấp.",
+    "brand": "Vivo",
+    "price": 3550000,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "62565659c48e4c217835fc2f"
+    },
+    "name": "Nokia 1280 Zin",
+    "category": "Điện thoại nút bấm",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum",
+    "brand": "Samsung",
+    "price": 140000,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "625657c7b7b41a9c198bdb94"
+    },
+    "name": "Nokia 105 Zin",
+    "category": "Điện thoại nút bấm",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum",
+    "brand": "Nokia",
+    "price": 130000,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6261ee31dfa690d4394b0359"
+    },
+    "name": "Iphone 123s plus",
+    "category": "Điện thoại thông minh",
+    "brand": "Apple",
+    "variations": [],
+    "quantity": 2010,
+    "price": 10000000,
+    "test": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "626352dd0486533b9635588a"
+    },
+    "name": "Nokia Cuc gach",
+    "category": "Điện thoại nút bấm",
+    "brand": "Nokia",
+    "variations": [
+      "Đen",
+      "Xanh ",
+      "Đỏ"
+    ],
+    "quantity": 1000,
+    "price": 123000,
+    "test": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6263535261c30a8958eb90ab"
+    },
+    "name": "Nokia Cuc gach 2",
+    "category": "Điện thoại nút bấm",
+    "brand": "Nokia",
+    "variations": [
+      "Đen",
+      "Xanh ",
+      "Đỏ"
+    ],
+    "quantity": 1000,
+    "price": 123000,
+    "test": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6263547564321a6df0c79e85"
+    },
+    "name": "Nokia Cuc gach 2",
+    "category": "Điện thoại nút bấm",
+    "brand": "Nokia",
+    "variations": [
+      "Đen",
+      "Xanh ",
+      "Đỏ"
+    ],
+    "quantity": 1000,
+    "price": 123000,
+    "test": false,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "62636809a7a1ec05d8564928"
+    },
+    "name": "Điện thoại củ cải",
+    "category": "Điện thoại nút bấm",
+    "description": "Làm gạch xây nhà cũng được",
+    "brand": "Nokia",
+    "variations": [
+      "Đen",
+      "Xám",
+      "Đỏ"
+    ],
+    "bundles": [
+      {
+        "name": "Điện thoại + Sạc",
+        "price": 2000,
+        "_id": {
+          "$oid": "62636809a7a1ec05d8564929"
+        }
+      },
+      {
+        "name": "Điện thoại + Giá đỡ",
+        "price": 3000,
+        "_id": {
+          "$oid": "62636809a7a1ec05d856492a"
+        }
+      }
+    ],
+    "quantity": 1,
+    "price": 1000,
+    "test": false,
+    "__v": 0
+  }
+]

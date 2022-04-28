@@ -6,12 +6,29 @@ on:
     branches: [master]
 jobs:
   test:
+    env:
+      CI: true
+      MONGO_URL: mongodb://localhost/products
+      API_VERSION: v0.2
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+        mongodb-version: ['4.2', '4.4', '5.0']
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Nodejs version 18
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Nodejs version ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
+          npm: cache
+
+      - name: Start MongoDB
+        uses: actions/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+
       - run: npm run install:server
       - run: npm run test:api

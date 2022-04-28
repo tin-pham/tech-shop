@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bson": "^4.6.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -43,7 +44,8 @@
     "@src": "./src",
     "@services": "./src/services",
     "@config": "./src/config",
-    "@middlewares": "./src/middlewares"
+    "@middlewares": "./src/middlewares",
+    "@data": "./data"
   },
   "jest": {
     "testTimeout": 90000,
@@ -63,7 +65,8 @@
       "@src(.*)": "<rootDir>/src/$1",
       "@services(.*)": "<rootDir>/src/services/$1",
       "@config(.*)": "<rootDir>/src/config/$1",
-      "@middlewares(.*)": "<rootDir>/src/middlewares/$1"
+      "@middlewares(.*)": "<rootDir>/src/middlewares/$1",
+      "@data(.*)": "<rootDir>/data"
     },
     "globals": {
       "__API_VERSION__": "v0.2",

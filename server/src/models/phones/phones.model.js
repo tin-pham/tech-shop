@@ -1,10 +1,11 @@
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 const Phones = require('./phones.mongo');
 const { getPagination } = require('@services/query');
-
-const { formatErrors } = require('@services/utils');
+const { formatErrors, read } = require('@services/utils');
 
 async function getAllPhones(query) {
   const { limit, skip } = getPagination({
@@ -63,6 +64,10 @@ async function getTestPhones() {
   return await Phones.find({ test: true });
 }
 
+async function seedPhones() {
+  await read(path.resolve('data/phones.json'), Phones);
+}
+
 module.exports = {
   getAllPhones,
   getPhoneById,
@@ -70,4 +75,5 @@ module.exports = {
   updatePhone,
   deletePhone,
   getTestPhones,
+  seedPhones,
 };
