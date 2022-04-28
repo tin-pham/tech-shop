@@ -47,12 +47,14 @@
   },
   "jest": {
     "testTimeout": 90000,
+    "testEnvironment": "node",
     "setupFiles": [
       "<rootDir>/src/config/jest/setup-env.js"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/src/config/jest/setup-afterenv.js"
     ],
+    "globalTeardown": "<rootDir>/src/config/jest/setup-teardown.js",
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
       "@api(.*)": "<rootDir>/src/routes/api/$1",
