@@ -4,14 +4,16 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 // More utils to work with Jest
-const { toIncludeAllPartialMembers, toContainValues } = require('jest-extended');
-expect.extend({ toIncludeAllPartialMembers, toContainValues});
+const {
+  toIncludeAllPartialMembers,
+  toContainValues,
+} = require('jest-extended');
+expect.extend({ toIncludeAllPartialMembers, toContainValues });
 
 const { getTestPhones } = require('@models/phones/phones.model');
 
 // ENVIRONMENT VARIABLE HERE
 // require('dotenv').config({ path: path.resolve('src/config/.test.env') });
-const { mongoConnect, mongoDisconnect } = require('@services/mongo');
 const app = require('@src/app');
 
 describe('Launches products API', () => {
@@ -51,16 +53,16 @@ describe('Launches products API', () => {
       const page2 = response2.body;
       expect(page1).not.toStrictEqual(page2);
     });
-    it('Should get object with some filter', async() => {
-      const response = await request(app) 
-      .get(`${API_URL}?brand=Nokia&priceFrom=1000`)
-      .expect('Content-Type', /json/)
-      .expect(200)
+    it('Should get object with some filter', async () => {
+      const response = await request(app)
+        .get(`${API_URL}?brand=Nokia&priceFrom=1000`)
+        .expect('Content-Type', /json/)
+        .expect(200);
 
       const phones = response.body;
-      expect(phones).toIncludeAllPartialMembers([{ brand: 'Nokia'}]);
-    })
-  })
+      expect(phones).toIncludeAllPartialMembers([{ brand: 'Nokia' }]);
+    });
+  });
 
   describe(`POST ${API_URL}`, () => {
     const phoneWithoutRequiredField = { test: true };
@@ -80,12 +82,12 @@ describe('Launches products API', () => {
       bundles: [
         {
           name: 'Điện thoại + Sạc',
-          price: 3100000
+          price: 3100000,
         },
         {
-      name: 'Điện thoại + Ốp lưng',
-          price: 3200000
-        }
+          name: 'Điện thoại + Ốp lưng',
+          price: 3200000,
+        },
       ],
       price: 3000000,
       test: true,
@@ -98,10 +100,13 @@ describe('Launches products API', () => {
         .expect('Content-Type', /json/)
         .expect(400);
 
-
       const errors = response.body;
 
-      expect(errors).toContainValues(['Vui lòng nhập tên sản phẩm', 'Vui lòng nhập giá sản phẩm',  'Vui lòng nhập danh mục sản phẩm' ])
+      expect(errors).toContainValues([
+        'Vui lòng nhập tên sản phẩm',
+        'Vui lòng nhập giá sản phẩm',
+        'Vui lòng nhập danh mục sản phẩm',
+      ]);
     });
 
     it('Should catch error if field is not valid', async () => {
@@ -112,7 +117,7 @@ describe('Launches products API', () => {
         .expect(400);
 
       const errors = response.body;
-      expect(errors).toContainValues(['Tên sản phẩm phải có ít nhất 4 kí tự' ])
+      expect(errors).toContainValues(['Tên sản phẩm phải có ít nhất 4 kí tự']);
     });
 
     it('Should created a new phone with 201 status code', async () => {
@@ -141,28 +146,26 @@ describe('Launches products API', () => {
   });
 
   describe('PUT ${API_URL}/:id', () => {
-
     const updatePhone = {
-      brand: 'Test Brand'
-    }
-    it('Should update the phone at :id', async() => {
+      brand: 'Test Brand',
+    };
+    it('Should update the phone at :id', async () => {
       const testPhones = await getTestPhones();
 
-      for(const phone of testPhones) {
+      for (const phone of testPhones) {
         const response = await request(app)
-        .put(`${API_URL}/${phone._id}`)
-        .send(updatePhone)
-        .expect('Content-Type', /json/)
-        .expect(200)
+          .put(`${API_URL}/${phone._id}`)
+          .send(updatePhone)
+          .expect('Content-Type', /json/)
+          .expect(200);
 
         const updatedPhone = response.body;
         expect(updatedPhone).toMatchObject({
-          brand: 'Test Brand'
-        })
+          brand: 'Test Brand',
+        });
       }
-    })
-  }) 
-
+    });
+  });
 
   describe(`DELETE ${API_URL}/:id`, () => {
     it('Should delete all test phones', async () => {

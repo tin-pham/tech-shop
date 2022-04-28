@@ -1,9 +1,10 @@
+const path = require('path');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
-const { getPagination } = require('@services/query');
 const Users = require('./users.mongo');
-const { formatErrors } = require('@services/utils');
+const { getPagination } = require('@services/query');
+const { formatErrors, read } = require('@services/utils');
 
 async function getAllUsers(query) {
   const { skip, limit } = getPagination(query);
@@ -29,8 +30,13 @@ async function deleteAllTestUsers() {
   }
 }
 
+async function seedUsers() {
+  await read(path.resolve('data/users.json'));
+}
+
 module.exports = {
   getAllUsers,
   createUser,
   deleteAllTestUsers,
+  seedUsers,
 };

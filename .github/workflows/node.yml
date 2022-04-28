@@ -8,12 +8,12 @@ jobs:
   test:
     env:
       CI: true
-      MONGO_URL: mongodb://localhost/products
+      MONGO_URL: mongodb+srv://shin:xD5PLohxq9RclDWw@nasacluster.auttl.mongodb.net/products?retryWrites=true&w=majority
       API_VERSION: v0.2
     strategy:
       matrix:
         node-version: [14.x, 16.x]
-        mongodb-version: ['4.2', '4.4', '5.0']
+        mongodb-version: ['5.0']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,11 +24,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           npm: cache
-
-      - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.7.0
-        with:
-          mongodb-version: ${{ matrix.mongodb-version }}
-
       - run: npm run install:server
       - run: npm run test:api

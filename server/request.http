@@ -58,4 +58,6 @@ Content-Type: application/json
  "password": "1234"
 }
 
+GET http://localhost:8000/api/v0.2/phones?brand=Nokia
+
 
