@@ -30,6 +30,7 @@ async function seedReviewsToProduct(product) {
     reviewData.forEach(async (review) => {
       if (!(await isReviewExist(review))) {
         // TODO: It should be product not phone
+
         const newReview = await addReview(review);
         await Phone.addReviewToPhone(newReview, product);
       }
