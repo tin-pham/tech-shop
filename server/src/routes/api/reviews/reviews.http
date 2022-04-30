@@ -1,0 +1,15 @@
+GET http://localhost:8000/api/v0.2/reviews
+
+POST http://localhost:8000/api/v0.2/reviews
+Content-Type: application/json
+
+{
+  "content": "stupid!!!!!",
+  "star": "1",
+  "product": {
+    "id": "6261ee31dfa690d4394b0359",
+    "model": "Phone"
+  },
+  "user": "625e33e40ce7695a361cbab1"
+}
+

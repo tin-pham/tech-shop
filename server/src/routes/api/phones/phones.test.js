@@ -11,21 +11,12 @@ const {
 expect.extend({ toIncludeAllPartialMembers, toContainValues });
 
 const { getTestPhones } = require('@models/phones/phones.model');
-
 // ENVIRONMENT VARIABLE HERE
 // require('dotenv').config({ path: path.resolve('src/config/.test.env') });
 const app = require('@src/app');
 
 describe('Launches products API', () => {
   const API_URL = `/api/${process.env.API_VERSION}/phones`;
-
-  // beforeAll(async () => {
-  //   await mongoConnect();
-  // });
-
-  // afterAll(async () => {
-  //   await mongoDisconnect();
-  // });
 
   describe(`GET ${API_URL}`, () => {
     it('Should response with 200 status code', async () => {

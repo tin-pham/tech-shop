@@ -1,0 +1,12 @@
+GET http://localhost:8000/api/v0.2/phones
+
+GET http://localhost:8000/api/v0.2/phones?reviews=true
+
+POST http://localhost:8000/api/v0.2/phones
+Content-Type: application/json
+
+{
+  "name": "Dien thoai cuc gach 512",
+  "price": 123000,
+  "category": "Điện thoại nút bấm"
+}

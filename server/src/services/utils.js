@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const { EJSON } = require('bson');
 
+// const mongoose = require('mongoose');
+// const ObjectId = mongoose.Types.ObjectId;
+
 function formatErrors(validationResult) {
   const errors = {};
 
@@ -25,7 +28,7 @@ function arrayNotEmpty(item) {
   return Array.isArray(item) && item.length > 0;
 }
 
-async function read(filename, Model) {
+async function read(filename, callback) {
   const readableStream = fs.createReadStream(filename);
 
   readableStream.on('error', (error) => {
@@ -36,15 +39,19 @@ async function read(filename, Model) {
     try {
       const data = EJSON.parse(chunk.toString());
 
-      const promisesData = data.map((piece) => {
-        return Model.findOneAndUpdate({ _id: piece._id }, piece, {
-          new: true,
-        });
-      });
+      // const promisesData = data.map((piece) => {
+      //   return Model.findOneAndUpdate({ _id: piece._id }, piece, {
+      //     upsert: true,
+      //     new: true,
+      //     setDefaultsOnInsert: true,
+      //   });
+      // });
 
-      const newData = await Promise.all(promisesData);
+      const promiseData = callback(data);
+
+      // const newData = await Promise.all(promiseData);
       console.log('Insert data successfully');
-      return newData;
+      //return newData;
     } catch (errors) {
       console.error(errors);
       return errors;

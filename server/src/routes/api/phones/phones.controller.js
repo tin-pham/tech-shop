@@ -16,6 +16,9 @@ module.exports = {
       priceFrom = 0,
       priceTo = Infinity,
       quantity = 0,
+      reviews = false,
+      reviewsPage,
+      reviewsLimit,
     } = req.query;
 
     const filters = {
@@ -26,6 +29,9 @@ module.exports = {
       priceTo,
       quantity,
       category,
+      reviews,
+      reviewsPage,
+      reviewsLimit,
     };
     return res.status(200).json(await getAllPhones(filters));
   },

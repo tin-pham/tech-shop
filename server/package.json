@@ -56,7 +56,6 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/config/jest/setup-afterenv.js"
     ],
-    "globalTeardown": "<rootDir>/src/config/jest/setup-teardown.js",
     "moduleNameMapper": {
       "@routes(.*)": "<rootDir>/src/routes/$1",
       "@api(.*)": "<rootDir>/src/routes/api/$1",

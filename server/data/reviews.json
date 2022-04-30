@@ -1,0 +1,122 @@
+[
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000000"
+    },
+    "content": "Sản phẩm tốt",
+    "star": "5",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000001"
+    },
+    "content": "Quá tệ, không nên mua",
+    "star": "1",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000002"
+    },
+    "content": "Quá tốt, good good",
+    "star": "5",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000003"
+    },
+    "content": "Quá tốt, good good",
+    "star": "5",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000004"
+    },
+    "content": "Giao hàng hơi chậm mà cũng được",
+    "star": "4.5",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000005"
+    },
+    "content": "Thường xuyên crash khi vào app",
+    "star": "3",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000006"
+    },
+    "content": "Đánh giá để có điểm",
+    "star": "5",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000007"
+    },
+    "content": "Admin không trả lời khi hỏi",
+    "star": "1",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000008"
+    },
+    "content": "v::vv:v:",
+    "star": "2",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  },
+  {
+    "_id": {
+      "$oid": "626c9837fc13ae114f000009"
+    },
+    "content": "Lần đầu mua",
+    "star": "4",
+    "product": {
+      "id": "6261ee31dfa690d4394b0359",
+      "model": "Phone"
+    },
+    "user": "625e33e40ce7695a361cbab1"
+  }
+]
