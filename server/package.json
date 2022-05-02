@@ -45,7 +45,8 @@
     "@services": "./src/services",
     "@config": "./src/config",
     "@middlewares": "./src/middlewares",
-    "@data": "./data"
+    "@data": "./data",
+    "@seeds": "./src/seeds"
   },
   "jest": {
     "testTimeout": 90000,

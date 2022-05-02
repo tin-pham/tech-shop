@@ -8,8 +8,11 @@ require('module-alias')(path.join(__dirname, '..'));
 require('dotenv').config({ path: path.resolve('src/config/.test.env') });
 
 const { mongoConnect } = require('@services/mongo');
-const Phone = require('@models/phones/phones.model');
-const Review = require('@models/reviews/reviews.model');
+// const Phone = require('@models/phones/phones.model');
+// const Review = require('@models/reviews/reviews.model');
+
+const { seedPhones } = require('@seeds/phones.seed');
+const { seedReviews } = require('@seeds/reviews.seed');
 const app = require('./app');
 
 const PORT = process.env.PORT || 8000;
@@ -17,10 +20,11 @@ const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 async function runServer() {
   await mongoConnect();
-  await Phone.seedPhones();
-  const phone = await Phone.getFirstPhone();
-  console.log(phone);
-  await Review.seedReviewsToProduct(phone);
+
+  await seedPhones();
+  console.log('Between');
+  await seedReviews();
+  //await seedReviews();
 
   server.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);

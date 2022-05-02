@@ -2,6 +2,7 @@ module.exports = {
   getMethodsPage(req, res) {
     return res.render('templates/methods/methods', {
       username: res.locals.user?.username,
+      apiVer: global.apiVer,
     });
   },
   getGetMethodPage(req, res) {

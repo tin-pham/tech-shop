@@ -73,8 +73,8 @@ async function getTestPhones() {
 }
 
 async function seedPhones() {
-  await read(path.resolve('data/phones.json'), function(phoneData) {
-    return phoneData.map((phone) => {
+  return read(path.resolve('data/phones.json'), function(phoneData) {
+    return phoneData.map(async (phone) => {
       return PhoneModel.findOneAndUpdate({ _id: phone._id }, phone, {
         upsert: true,
         new: true,

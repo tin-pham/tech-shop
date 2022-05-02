@@ -6,7 +6,7 @@
     "content": "Sản phẩm tốt",
     "rating": "5",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -18,7 +18,7 @@
     "content": "Quá tệ, không nên mua",
     "rating": "1",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -30,7 +30,7 @@
     "content": "Quá tốt, good good",
     "rating": "5",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -42,7 +42,7 @@
     "content": "Quá tốt, good good",
     "rating": "5",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -54,7 +54,7 @@
     "content": "Giao hàng hơi chậm mà cũng được",
     "rating": "4.5",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -66,7 +66,7 @@
     "content": "Thường xuyên crash khi vào app",
     "rating": "3",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -78,7 +78,7 @@
     "content": "Đánh giá để có điểm",
     "rating": "5",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -90,7 +90,7 @@
     "content": "Admin không trả lời khi hỏi",
     "rating": "1",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -102,7 +102,7 @@
     "content": "v::vv:v:",
     "rating": "2",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"
@@ -114,7 +114,7 @@
     "content": "Lần đầu mua",
     "rating": "4",
     "product": {
-      "id": "6261ee31dfa690d4394b0359",
+      "_id": "625379c6e50a565fddb4d97b",
       "model": "Phone"
     },
     "user": "625e33e40ce7695a361cbab1"

@@ -18,6 +18,27 @@ const reviewSchema = new Schema({
     required: [true, 'Đánh giá phải có người đánh giá'],
     ref: 'User',
   },
+  product: {
+    _id: {
+      type: Schema.Types.ObjectId,
+      refPath: 'model',
+    },
+    model: {
+      type: String,
+      enum: ['Phone'],
+    },
+  },
+});
+
+reviewSchema.pre('save', async function(next) {
+  const Product = mongoose.model(this.product.model);
+  const product = await Product.findOne({ _id: this.product._id });
+  console.log(product);
+
+  product.reviews.push(this);
+  product.save();
+
+  next();
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

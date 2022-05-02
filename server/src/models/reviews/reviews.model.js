@@ -20,21 +20,29 @@ async function getReviews(query) {
 // TODO: Generilize the find product not just in phone
 async function addReviewToProduct(review, product) {
   if (!(await isReviewExist(review))) {
+    const phone = await Phone.getPhoneById(product._id);
     const newReview = await ReviewModel.create(review);
     // TODO: Should generilize the phone => product
-    const phone = await Phone.getPhoneById(product._id);
     phone.reviews.push(newReview);
     phone.save();
 
     return newReview;
+  } else {
+    return review;
   }
 }
 
-async function seedReviewsToProduct(product) {
-  await read(path.resolve('data/reviews.json'), function(reviewData) {
-    return reviewData.map((review) => {
+async function addReview(review) {
+  if (!(await isReviewExist(review))) {
+    return await ReviewModel.create(review);
+  }
+}
+
+async function seedReviewsToProduct() {
+  return read(path.resolve('data/reviews.json'), function(reviewData) {
+    return reviewData.map(async (review) => {
       // TODO: It should be product not phone
-      return addReviewToProduct(review, product);
+      return addReview(review);
     });
   });
 }
@@ -56,6 +64,7 @@ async function deleteMany(reviews) {
 
 module.exports = {
   getOneWithId,
+  addReview,
   getReviews,
   addReviewToProduct,
   deleteReview,

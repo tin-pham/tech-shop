@@ -39,7 +39,7 @@ const phoneSchema = new Schema({
   },
 });
 
-phoneSchema.pre('remove', async function(next) {
+phoneSchema.pre('deleteOne', async function(next) {
   const reviews = this.reviews;
   const Review = mongoose.model('Review');
   await Review.deleteMany(reviews);
