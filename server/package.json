@@ -66,8 +66,8 @@
       "@services(.*)": "<rootDir>/src/services/$1",
       "@config(.*)": "<rootDir>/src/config/$1",
       "@middlewares(.*)": "<rootDir>/src/middlewares/$1",
-      "@data(.*)": "<rootDir>/data",
-      "@seed(.*)": "<rootDir>/src/seeds"
+      "@data(.*)": "<rootDir>/data/$1",
+      "@seeds(.*)": "<rootDir>/src/seeds/$1"
     },
     "globals": {
       "__API_VERSION__": "v0.2",
