@@ -1,5 +1,7 @@
-// const path = require('path');
+const path = require('path');
 
-// require('dotenv').config({
-//   path: path.resolve('src/config/.test.env'),
-// });
+const dotenv = require('dotenv');
+
+if (!process.env.GITHUB_ACTIONS) {
+  dotenv.config({ path: path.resolve('src/config/.test.env') });
+}

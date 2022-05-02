@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//const Review = require('@models/reviews/reviews.model');
+
 const phoneSchema = new Schema({
   name: {
     type: String,
@@ -35,6 +37,14 @@ const phoneSchema = new Schema({
     type: Boolean,
     default: false,
   },
+});
+
+phoneSchema.pre('remove', async function(next) {
+  const reviews = this.reviews;
+  const Review = mongoose.model('Review');
+  await Review.deleteMany(reviews);
+
+  next();
 });
 
 module.exports = mongoose.model('Phone', phoneSchema);

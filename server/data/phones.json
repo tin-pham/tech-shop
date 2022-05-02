@@ -7,6 +7,7 @@
     "category": "Điện thoại thông minh",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tristique enim et fringilla tincidunt. Proin ac mi mauris. Aliquam et hendrerit felis, vitae tempus turpis. Aenean luctus, risus eget maximus convallis, augue felis viverra ligula, eget tincidunt lacus lectus a risus. Maecenas laoreet id magna at fringilla",
     "brand": "Apple",
+    "quantity": 1000,
     "price": 36990000
   },
   {
@@ -17,6 +18,7 @@
     "category": "Điện thoại thông minh",
     "description": "Dù sở hữu dung lượng pin lớn tới 5000mAh nhưng Y21 vẫn mang một thân máy mỏng nhẹ chỉ 8.0mm với thiết kế Khung Viền Phẳng 2.5D, mang đến cảm giác cầm nắm thoải mái và cao cấp.",
     "brand": "Vivo",
+    "quantity": 1000,
     "price": 3550000,
     "__v": 0
   },
@@ -28,6 +30,7 @@
     "category": "Điện thoại nút bấm",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum",
     "brand": "Samsung",
+    "quantity": 1000,
     "price": 140000,
     "__v": 0
   },
@@ -39,6 +42,7 @@
     "category": "Điện thoại nút bấm",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum",
     "brand": "Nokia",
+    "quantity": 1000,
     "price": 130000,
     "__v": 0
   },

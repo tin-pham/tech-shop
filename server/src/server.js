@@ -1,3 +1,4 @@
+'use strict';
 const http = require('http');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -18,6 +19,7 @@ async function runServer() {
   await mongoConnect();
   await Phone.seedPhones();
   const phone = await Phone.getFirstPhone();
+  console.log(phone);
   await Review.seedReviewsToProduct(phone);
 
   server.listen(PORT, () => {

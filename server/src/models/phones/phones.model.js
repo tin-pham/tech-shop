@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
@@ -85,17 +84,17 @@ async function seedPhones() {
   });
 }
 
-async function addReviewToPhone(reviewData, phoneData) {
-  const phone = await PhoneModel.findOne({ _id: phoneData._id });
+// async function addReviewToPhone(reviewData, phoneData) {
+//   const phone = await PhoneModel.findOne({ _id: phoneData._id });
 
-  phone.reviews.push(reviewData);
+//   phone.reviews.push(reviewData);
 
-  await phone.save();
+//   await phone.save();
 
-  return phone;
-}
+//   return phone;
+// }
 
-module.exports = {
+const Phone = {
   getFirstPhone,
   getAllPhones,
   getPhoneById,
@@ -104,5 +103,6 @@ module.exports = {
   deletePhone,
   getTestPhones,
   seedPhones,
-  addReviewToPhone,
 };
+
+module.exports = Phone;

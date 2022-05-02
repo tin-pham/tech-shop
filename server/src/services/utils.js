@@ -39,19 +39,11 @@ async function read(filename, callback) {
     try {
       const data = EJSON.parse(chunk.toString());
 
-      // const promisesData = data.map((piece) => {
-      //   return Model.findOneAndUpdate({ _id: piece._id }, piece, {
-      //     upsert: true,
-      //     new: true,
-      //     setDefaultsOnInsert: true,
-      //   });
-      // });
+      let promiseData = callback(data);
 
-      const promiseData = callback(data);
-
-      // const newData = await Promise.all(promiseData);
+      const newData = await Promise.all(promiseData);
       console.log('Insert data successfully');
-      //return newData;
+      return newData;
     } catch (errors) {
       console.error(errors);
       return errors;

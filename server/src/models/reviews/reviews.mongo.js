@@ -7,7 +7,7 @@ const reviewSchema = new Schema({
     required: [true, 'Vui lòng nhập nội dung đánh giá'],
     minlength: [4, 'Đánh giá phải có ít nhất 4 kí tự'],
   },
-  star: {
+  rating: {
     type: Number,
     required: [true, 'Vui lòng nhập số sao bạn muốn đánh giá'],
     min: [1, 'Đánh giá phải có ít nhất phải có 1 sao'],
@@ -17,19 +17,6 @@ const reviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: [true, 'Đánh giá phải có người đánh giá'],
     ref: 'User',
-  },
-
-  product: {
-    id: {
-      type: Schema.Types.ObjectId,
-      required: [true, 'Đánh giá phải có hàng đánh giá'],
-      ref: 'onProduct',
-    },
-    model: {
-      type: String,
-      required: true,
-      enum: ['Phone'],
-    },
   },
 });
 
