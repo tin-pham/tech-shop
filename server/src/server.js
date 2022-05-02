@@ -22,7 +22,6 @@ async function runServer() {
   await mongoConnect();
 
   await seedPhones();
-  console.log('Between');
   await seedReviews();
   //await seedReviews();
 

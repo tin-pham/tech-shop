@@ -1,14 +1,14 @@
 const { mongoConnect, mongoDisconnect } = require('@services/mongo');
 
 const { deleteAllTestUsers } = require('@models/users/users.model');
-const Phone = require('@models/phones/phones.model');
-const Review = require('@models/reviews/reviews.model');
+const { seedPhones } = require('@seeds/phones.seed');
+const { seedReviews } = require('@seeds/reviews.seed');
 
 beforeAll(async () => {
   await mongoConnect();
-  await Phone.seedPhones();
-  const phone = await Phone.getFirstPhone();
-  await Review.seedReviewsToProduct(phone);
+
+  await seedPhones();
+  await seedReviews();
 });
 
 afterAll(async () => {

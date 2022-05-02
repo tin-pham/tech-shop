@@ -33,7 +33,6 @@ const reviewSchema = new Schema({
 reviewSchema.pre('save', async function(next) {
   const Product = mongoose.model(this.product.model);
   const product = await Product.findOne({ _id: this.product._id });
-  console.log(product);
 
   product.reviews.push(this);
   product.save();
