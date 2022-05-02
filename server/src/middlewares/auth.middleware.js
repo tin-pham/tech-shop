@@ -7,12 +7,18 @@ module.exports = {
     const token = req.cookies.jwt;
 
     if (!token) {
-      return res.redirect('/login');
+      return res.status(401).json({
+        error: 'Bạn chưa đăng nhập',
+      });
+      //return res.redirect('/login');
     }
 
     jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
       if (err) {
-        return res.redirect('/login');
+        return res.status(401).json({
+          error: 'Bạn chưa đăng nhập',
+        });
+        // return res.redirect('/login');
       }
       console.log(decodedToken);
       next();
