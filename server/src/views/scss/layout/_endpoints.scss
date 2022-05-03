@@ -1,0 +1,7 @@
+@use '../abstracts/mixins' as *;
+
+.endpoints {
+  @include flex(flex-start, center, column);
+  gap: 1em;
+  font-size: 2.5rem;
+}

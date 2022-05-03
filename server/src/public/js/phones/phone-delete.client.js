@@ -1,6 +1,6 @@
 const deleteForm = document.querySelector('.form-delete');
 
-deleteForm.addEventListener('submit', async function(e) {
+deleteForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const id = deleteForm.id.value;
