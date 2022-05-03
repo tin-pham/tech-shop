@@ -17,7 +17,7 @@ module.exports = {
         secure: false,
       });
 
-      return res.status(200).json({ id: user._id });
+      return res.status(200).json({ id: user._id, token });
     } catch (errors) {
       // TODO: Better error handling
       return res.status(401).json({ error: errors.message });

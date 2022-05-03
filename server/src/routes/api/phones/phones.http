@@ -1,12 +1,20 @@
-GET http://localhost:8000/api/v0.2/phones
+GET http://localhost:8000/api/v0.3/phones
 
-GET http://localhost:8000/api/v0.2/phones?reviews=true
+GET http://localhost:8000/api/v0.3/phones?reviews=true
 
-POST http://localhost:8000/api/v0.2/phones
+POST http://localhost:8000/api/v0.3/phones
 Content-Type: application/json
 
 {
-  "name": "Dien thoai cuc gach 512",
-  "price": 123000,
-  "category": "Điện thoại nút bấm"
+  "name": "Điện thoại củ chuối",
+  "price": 1350000,
+  "category": "Điện thoại nút bấm",
+  "quantity": 100
+}
+
+PUT http://localhost:8000/api/v0.3/phones/6270cb38ed9385622a2130ff
+Content-Type: application/json
+
+{
+  "brand": "Nokia"
 }

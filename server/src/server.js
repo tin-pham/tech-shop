@@ -13,6 +13,7 @@ const { mongoConnect } = require('@services/mongo');
 
 const { seedPhones } = require('@seeds/phones.seed');
 const { seedReviews } = require('@seeds/reviews.seed');
+const { seedUsers } = require('@seeds/users.seed');
 const app = require('./app');
 
 const PORT = process.env.PORT || 8000;
@@ -23,6 +24,7 @@ async function runServer() {
 
   await seedPhones();
   await seedReviews();
+  await seedUsers();
   //await seedReviews();
 
   server.listen(PORT, () => {

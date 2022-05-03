@@ -68,12 +68,6 @@
       "@middlewares(.*)": "<rootDir>/src/middlewares/$1",
       "@data(.*)": "<rootDir>/data/$1",
       "@seeds(.*)": "<rootDir>/src/seeds/$1"
-    },
-    "globals": {
-      "__API_VERSION__": "v0.2",
-      "__API_URL__": "/api/v0.2",
-      "__API_PHONES__": "/api/v0.2/phones",
-      "__API_USERS__": "/api/v0.2/users"
     }
   }
 }

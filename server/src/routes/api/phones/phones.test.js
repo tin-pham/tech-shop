@@ -13,15 +13,29 @@ expect.extend({ toIncludeAllPartialMembers, toContainValues });
 const { getTestPhones } = require('@models/phones/phones.model');
 // ENVIRONMENT VARIABLE HERE
 // require('dotenv').config({ path: path.resolve('src/config/.test.env') });
+
 const app = require('@src/app');
 
-describe('Launches products API', () => {
+let token = '';
+beforeAll(async () => {
+  const response = await request(app)
+    .post(`/api/${process.env.API_VERSION}/login`)
+    .send({
+      username: 'testing111',
+      password: 'testing111',
+    });
+
+  token = response.body.token;
+});
+
+describe('Phones testing', () => {
   const API_URL = `/api/${process.env.API_VERSION}/phones`;
 
   describe(`GET ${API_URL}`, () => {
     it('Should response with 200 status code', async () => {
       await request(app)
         .get(API_URL)
+        .set('Cookie', `jwt=${token};`)
         .expect('Content-Type', /json/)
         .expect(200);
     });
@@ -31,11 +45,13 @@ describe('Launches products API', () => {
     it('Should get the 2 page of request with two different object', async () => {
       const response1 = await request(app)
         .get(`${API_URL}?page=1&limit=2`)
+        .set('Cookie', [`jwt=${token};`])
         .expect('Content-Type', /json/)
         .expect(200);
 
       const response2 = await request(app)
         .get(`${API_URL}?page=2&limit2`)
+        .set('Cookie', [`jwt=${token};`])
         .expect('Content-Type', /json/)
         .expect(200);
 
@@ -47,6 +63,7 @@ describe('Launches products API', () => {
     it('Should get object with some filter', async () => {
       const response = await request(app)
         .get(`${API_URL}?brand=Nokia&priceFrom=1000`)
+        .set('Cookie', [`jwt=${token};`])
         .expect('Content-Type', /json/)
         .expect(200);
 
@@ -87,6 +104,7 @@ describe('Launches products API', () => {
     it('Should catch error if required field is empty', async () => {
       const response = await request(app)
         .post(API_URL)
+        .set('Cookie', [`jwt=${token};`])
         .send(phoneWithoutRequiredField)
         .expect('Content-Type', /json/)
         .expect(400);
@@ -103,6 +121,7 @@ describe('Launches products API', () => {
     it('Should catch error if field is not valid', async () => {
       const response = await request(app)
         .post(API_URL)
+        .set('Cookie', [`jwt=${token};`])
         .send(phoneWithInvalidField)
         .expect('Content-Type', /json/)
         .expect(400);
@@ -114,6 +133,7 @@ describe('Launches products API', () => {
     it('Should created a new phone with 201 status code', async () => {
       const response = await request(app)
         .post(API_URL)
+        .set('Cookie', [`jwt=${token};`])
         .send(phone)
         .expect('Content-Type', /json/)
         .expect(201);
@@ -128,6 +148,7 @@ describe('Launches products API', () => {
       for (const phone of testPhones) {
         const response = await request(app)
           .get(`${API_URL}/${phone._id}`)
+          .set('Cookie', [`jwt=${token};`])
           .expect('Content-Type', /json/)
           .expect(200);
 
@@ -147,6 +168,7 @@ describe('Launches products API', () => {
         const response = await request(app)
           .put(`${API_URL}/${phone._id}`)
           .send(updatePhone)
+          .set('Cookie', [`jwt=${token};`])
           .expect('Content-Type', /json/)
           .expect(200);
 
@@ -164,6 +186,7 @@ describe('Launches products API', () => {
       for (let phone of testPhones) {
         const response = await request(app)
           .delete(`${API_URL}/${phone._id}`)
+          .set('Cookie', [`jwt=${token};`])
           .expect('Content-Type', /json/)
           .expect(200);
 

@@ -9,7 +9,7 @@ jobs:
     env:
       CI: true
       MONGO_URL: mongodb://localhost/products
-      API_VERSION: v0.2
+      API_VERSION: v0.3
       SECRET_KEY: youaresocute
     strategy:
       matrix:

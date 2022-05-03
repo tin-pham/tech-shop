@@ -18,7 +18,7 @@ module.exports = {
         return res.status(401).json({
           error: 'Bạn chưa đăng nhập',
         });
-        // return res.redirect('/login');
+        //return res.redirect('/login');
       }
       console.log(decodedToken);
       next();

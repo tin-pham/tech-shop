@@ -6,7 +6,7 @@ getForm.addEventListener('submit', async (e) => {
   const limit = getForm.limit.value;
   const page = getForm.page.value;
 
-  const endpoint = `http://localhost:8000/api/v0.2/phones?page=${page}&limit=${limit}`;
+  const endpoint = `http://localhost:8000/api/v0.3/phones?page=${page}&limit=${limit}`;
 
   location.assign(endpoint);
 });
@@ -31,7 +31,7 @@ getForm.addEventListener('change', (e) => {
 
   const searchParams = new URLSearchParams(paramsObj);
 
-  const route = `/api/v0.2/phones?${searchParams.toString()}`;
+  const route = `/api/v0.3/phones?${searchParams.toString()}`;
   endPointUrl.href = route;
   endPointUrl.textContent = route;
 });

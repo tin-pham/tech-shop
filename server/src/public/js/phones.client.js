@@ -58,7 +58,7 @@ phoneForm.addEventListener('submit', async (e) => {
     description,
   };
 
-  const API_URL = 'http://localhost:8000/api/v0.2/phones';
+  const API_URL = 'http://localhost:8000/api/v0.3/phones';
 
   try {
     const res = await fetch(API_URL, {

@@ -52,8 +52,19 @@ function read(filename, callback) {
   });
 }
 
+async function login({ username, password }) {
+  const user = { username, password };
+
+  await fetch(`/api/v0.3/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(user),
+  });
+}
+
 module.exports = {
   formatErrors,
   arrayNotEmpty,
   read,
+  login,
 };

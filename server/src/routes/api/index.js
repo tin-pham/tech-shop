@@ -1,6 +1,11 @@
 // API version
+const { Router } = require('express');
+const api = require('./versions/v0.3.api');
 
-global.apiVer = 'v0.2';
-const api = require('./versions/v0.2.api');
+const apiRouter = Router();
 
-module.exports = api;
+global.apiVer = 'v0.3';
+
+apiRouter.use(`/v0.3`, api);
+
+module.exports = apiRouter;

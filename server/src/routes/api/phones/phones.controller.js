@@ -8,32 +8,7 @@ const {
 
 module.exports = {
   async httpGetAllPhones(req, res) {
-    const {
-      page,
-      limit,
-      brand = '.*',
-      category = '.*',
-      priceFrom = 0,
-      priceTo = Infinity,
-      quantity = 0,
-      reviews = false,
-      reviewsPage,
-      reviewsLimit,
-    } = req.query;
-
-    const filters = {
-      page,
-      limit,
-      brand,
-      priceFrom,
-      priceTo,
-      quantity,
-      category,
-      reviews,
-      reviewsPage,
-      reviewsLimit,
-    };
-    return res.status(200).json(await getAllPhones(filters));
+    return res.status(200).json(await getAllPhones(req.query));
   },
 
   async httpGetPhone(req, res) {

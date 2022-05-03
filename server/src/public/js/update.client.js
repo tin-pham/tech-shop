@@ -8,7 +8,7 @@ updateForm.addEventListener('submit', async function(e) {
   const price = updateForm.id.price;
 
   const newPhone = { name, price };
-  const API_URL = `/api/v0.2/phones/${id}`;
+  const API_URL = `/api/v0.3/phones/${id}`;
   try {
     const res = await fetch(API_URL, {
       method: 'PUT',

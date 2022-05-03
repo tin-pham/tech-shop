@@ -16,7 +16,7 @@ loginForm.addEventListener('submit', async (e) => {
   console.log(username, password);
 
   try {
-    const res = await fetch('/api/v0.2/login', {
+    const res = await fetch('/api/v0.3/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       credentials: 'same-origin',

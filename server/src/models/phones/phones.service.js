@@ -1,11 +1,18 @@
 module.exports = {
   getFilter(query) {
-    const brandName = new RegExp(`${query.brand}`);
+    const {
+      brand = '.*',
+      priceFrom = 0,
+      priceTo = Infinity,
+      quantity = 0,
+    } = query;
+
+    const brandName = new RegExp(`${brand}`);
 
     const filter = {
       brand: { $regex: brandName, $options: 'i' },
-      price: { $gte: query.priceFrom, $lte: query.priceTo },
-      quantity: { $gte: query.quantity },
+      price: { $gte: priceFrom, $lte: priceTo },
+      quantity: { $gte: quantity },
     };
 
     return filter;

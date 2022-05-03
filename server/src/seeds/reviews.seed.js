@@ -3,6 +3,6 @@ const Phone = require('@models/phones/phones.model');
 
 module.exports = {
   async seedReviews() {
-    return await Review.seedReviewsToProduct();
+    return Review.seedReviewsToProduct();
   },
 };
