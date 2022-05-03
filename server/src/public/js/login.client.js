@@ -13,7 +13,6 @@ loginForm.addEventListener('submit', async (e) => {
 
   const username = loginForm.username.value;
   const password = loginForm.password.value;
-  console.log(username, password);
 
   try {
     const res = await fetch('/api/v0.3/login', {

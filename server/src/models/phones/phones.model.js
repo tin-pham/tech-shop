@@ -79,6 +79,7 @@ async function seedPhones() {
         upsert: true,
         new: true,
         setDefaultsOnInsert: true,
+        omitUndefined: true,
       });
     });
   });

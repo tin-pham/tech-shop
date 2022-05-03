@@ -40,6 +40,7 @@ async function upsertUser(user) {
       upsert: true,
       new: true,
       setDefaultsOnInsert: true,
+      omitUndefined: true
     });
   } catch (errors) {
     return errors;
