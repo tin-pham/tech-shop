@@ -11,6 +11,6 @@ const api = express.Router();
 api.use(`/`, authRouter);
 api.use(`/phones`, auth, phonesRouter);
 api.use(`/users`, auth, usersRouter);
-api.use(`/reviews`, auth, reviewsRouter);
+api.use(`/reviews`, reviewsRouter);
 
 module.exports = api;

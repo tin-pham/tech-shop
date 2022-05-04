@@ -21,23 +21,15 @@ const reviewSchema = new Schema({
   product: {
     _id: {
       type: Schema.Types.ObjectId,
+      required: [true, 'Vui lòng nhập sản phẩm cần đánh giá'],
       refPath: 'model',
     },
     model: {
       type: String,
+      required: [true, 'Vui lòng nhập loại sản phẩm cần đánh giá'],
       enum: ['Phone'],
     },
   },
-});
-
-reviewSchema.pre('save', async function(next) {
-  const Product = mongoose.model(this.product.model);
-  const product = await Product.findOne({ _id: this.product._id });
-
-  product.reviews.push(this);
-  product.save();
-
-  next();
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

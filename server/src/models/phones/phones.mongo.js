@@ -27,24 +27,16 @@ const phoneSchema = new Schema({
     type: Number,
     required: [true, 'Vui lòng nhập giá sản phẩm'],
   },
-  reviews: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Review',
-    },
-  ],
+  // reviews: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Review',
+  //   },
+  // ],
   test: {
     type: Boolean,
     default: false,
   },
-});
-
-phoneSchema.pre('deleteOne', async function(next) {
-  const reviews = this.reviews;
-  const Review = mongoose.model('Review');
-  await Review.deleteMany(reviews);
-
-  next();
 });
 
 module.exports = mongoose.model('Phone', phoneSchema);

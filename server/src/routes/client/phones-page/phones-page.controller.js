@@ -3,14 +3,14 @@ module.exports = {
     return res.render('templates/phones/phones-get', {
       username: res.locals.user?.username,
       apiVer: global.apiVer,
-      script: '/js/phones/phones-get.client.js',
+      script: '/js/get.client.js',
     });
   },
   getPostPhonePage(req, res) {
     return res.render('templates/phones/phone-post', {
       username: res.locals.user?.username,
       apiVer: global.apiVer,
-      script: '/js/phones/phone-post.client.js',
+      script: '/js/post.client.js',
     });
   },
   getUpdatePhonePage(req, res) {

@@ -1,0 +1,59 @@
+<section class='links'>
+
+  <div class='endpoint'>
+    <p>GET All Reviews</p>
+    <div class='endpoint__url'>
+      <p>GET</p>
+      <a href='/api/{{apiVer}}/reviews'>/api/{{apiVer}}/reviews</a>
+    </div>
+  </div>
+  <div class='endpoint'>
+    <p>GET Specific Reviews</p>
+    <div class='endpoint__url'>
+      <p>GET</p>
+
+      <a href='/api/{{apiVer}}/reviews/626c9837fc13ae114f000000'>/api/{{apiVer}}/reviews/:id</a>
+    </div>
+  </div>
+
+  <form data-form='reviews' class='form form-get' action='/api/{{apiVer}}/reviews' autocomplete='off'>
+    <div class='form-container'>
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='product-id'>Sản phẩm muốn nhận reviews</label>
+          <input data-filter='productId' type='text' id='product-id' name='productId' />
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='min-rating'>Số rating ít nhất</label>
+          <input data-filter='minRating' type='number' id='min-rating' name='minRating' min='1' max='5' step='0.5'
+            value='1' />
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='reviews-limit'>Limit</label>
+          <input data-filter='reviewsLimit' type='number' id='reviews-limit' name='reviewsLimit' min='0' value='0' />
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <div class='form-group__main'>
+          <label for='reviews-page'>Page</label>
+          <input data-filter='reviewsPage' type='number' id='reviews-page' name='reviewsPage' min='0' value='1' />
+        </div>
+      </div>
+
+      <div class='endpoint__url'>
+        <p>GET</p>
+        <a
+          href='/api/{{apiVer}}/phones?reviewsPage=1&reviewsLimit=0'>/api/{{apiVer}}/phones?reviewsPage=1&reviewsLimit=0</a>
+      </div>
+    </div>
+  </form>
+</section>
+
+<script src={{script}}></script>

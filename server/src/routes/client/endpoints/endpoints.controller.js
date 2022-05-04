@@ -22,6 +22,14 @@ module.exports = {
     });
   },
 
+  getReviewEndpointsPage(req, res) {
+    return res.render('templates/methods', {
+      username: res.locals.user?.username,
+      apiVer: global.apiVer,
+      endpoint: 'reviews',
+    });
+  },
+
   getUserEndpointsPage(req, res) {
     return res.render('templates/methods', {
       username: res.locals.user?.username,

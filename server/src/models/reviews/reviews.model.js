@@ -1,40 +1,34 @@
 const path = require('path');
+const mongoose = require('mongoose');
+
 const ReviewModel = require('./reviews.mongo');
 const Phone = require('@models/phones/phones.model');
-const { getPagination } = require('@services/query');
-const { read } = require('@services/utils');
+const ReviewServices = require('./reviews.service');
+const { formatErrors, read } = require('@services/utils');
 
 async function getOneWithId(id) {
   return await ReviewModel.findOne({ _id: id });
 }
 
 async function getReviews(query) {
-  const { limit, skip } = getPagination({
-    limit: query.limit,
-    page: query.page,
+  const { limit, skip } = ReviewServices.getPagination({
+    limit: query.reviewsLimit,
+    page: query.reviewsPage,
   });
 
-  return await ReviewModel.find({}, { __v: 0 }).skip(skip).limit(limit);
-}
+  const filters = ReviewServices.getFilters(query);
 
-// TODO: Generilize the find product not just in phone
-async function addReviewToProduct(review, product) {
-  if (!(await isReviewExist(review))) {
-    const phone = await Phone.getPhoneById(product._id);
-    const newReview = await ReviewModel.create(review);
-    // TODO: Should generilize the phone => product
-    phone.reviews.push(newReview);
-    phone.save();
-
-    return newReview;
-  } else {
-    return review;
-  }
+  return await ReviewModel.find(filters, { __v: 0 }).skip(skip).limit(limit);
 }
 
 async function addReview(review) {
-  if (!(await isReviewExist(review))) {
-    return await ReviewModel.create(review);
+  try {
+    if (!(await isReviewExist(review))) {
+      console.log(review);
+      return await ReviewModel.create(review);
+    }
+  } catch (errors) {
+    return formatErrors(errors);
   }
 }
 
@@ -66,7 +60,6 @@ module.exports = {
   getOneWithId,
   addReview,
   getReviews,
-  addReviewToProduct,
   deleteReview,
   deleteMany,
   seedReviewsToProduct,
