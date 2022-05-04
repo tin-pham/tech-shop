@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { engine } = require('express-handlebars');
 
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.static(path.resolve('src/public')));
 app.use(morgan('combined'));
+app.use(helmet());
 
 // WARNING: handlebar-express can't get the res.locals
 app.get('*', checkCurrentUser);
