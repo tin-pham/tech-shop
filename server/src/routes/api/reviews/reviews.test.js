@@ -25,17 +25,4 @@ describe(`Reviews testing`, () => {
         .expect(200);
     });
   });
-
-  describe(`GET ${API_URL}/?reviews=true`, () => {
-    it('Should return 10 reviews inside a phones by default with status code 200', async () => {
-      const response = await request(app)
-        .get(API_URL + '/phones?reviews=true')
-        .set('Cookie', [`jwt=${token};`])
-        .expect('Content-Type', /json/)
-        .expect(200);
-
-      const { reviews } = response.body[0];
-      expect(reviews.length).toBe(10);
-    });
-  });
 });
