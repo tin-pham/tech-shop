@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 require('module-alias')(path.join(__dirname, '..'));
 
-require('dotenv').config({ path: path.resolve('src/config/.env') });
+require('dotenv').config({ path: path.resolve('src/config/.test.env') });
 
 const { mongoConnect } = require('@services/mongo');
 // const Phone = require('@models/phones/phones.model');

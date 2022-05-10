@@ -13,11 +13,11 @@ async function getFirstPhone() {
 
 async function getAllPhones(query) {
   const { limit, skip } = phonesService.getPagination(query);
-  const filter = phonesService.getFilter(query);
+  const filters = phonesService.getFilter(query);
 
   if (query.reviews) {
     const reviewPagination = reviewsService.getPagination(query);
-    return await PhoneModel.find(filter, { __v: 0 })
+    return await PhoneModel.find(filters, { __v: 0 })
       .populate({
         path: 'reviews',
         options: {
@@ -28,7 +28,7 @@ async function getAllPhones(query) {
       .skip(skip)
       .limit(limit);
   } else {
-    return await PhoneModel.find(filter, { __v: 0 }).skip(skip).limit(limit);
+    return await PhoneModel.find(filters, { __v: 0 }).skip(skip).limit(limit);
   }
 }
 

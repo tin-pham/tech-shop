@@ -30,6 +30,7 @@ getForm.addEventListener('input', (e) => {
       priceFrom: getForm.priceFrom.value,
       priceTo: getForm.priceTo.value,
       quantity: getForm.quantity.value,
+      category: getForm.category.value,
     });
   } else if (endpointForm === 'reviews') {
     Object.assign(paramsObj, {

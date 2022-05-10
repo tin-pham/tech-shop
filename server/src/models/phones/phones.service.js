@@ -1,21 +1,20 @@
 module.exports = {
   getFilter(query) {
-    const {
-      brand = '.*',
-      priceFrom = 0,
-      priceTo = Infinity,
-      quantity = 0,
-    } = query;
+    const { priceFrom = 0, priceTo = Infinity, quantity = 0, category } = query;
 
-    const brandName = new RegExp(`${brand}`);
-
-    const filter = {
-      brand: { $regex: brandName, $options: 'i' },
+    const phoneName = new RegExp(query.name, 'i');
+    const filters = {
       price: { $gte: priceFrom, $lte: priceTo },
       quantity: { $gte: quantity },
+      name: phoneName,
+      category,
     };
+    Object.keys(filters).forEach((key) => {
+      (filters[key] === '' || filters[key] === undefined) &&
+        delete filters[key];
+    });
 
-    return filter;
+    return filters;
   },
 
   getPagination(query) {
